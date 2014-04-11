@@ -76,11 +76,17 @@ limitations under the License.
         <div>Host State: <span id="mediaHostState">Unknown</span></div>
         <div>Media Type: <span id="mediaType">Unkown</span></div>
         <div>Media Protocol: <span id="mediaProtocol">Unknown</span></div>
+		<div>Page Error: <span id="pageError">Unknown</span></div>
     </div>
     <video id="receiverVideoElement"></video>
 
     <script type="text/javascript">
         "use strict";
+		
+		window.onerror = function myHandler(errorMsg, url, lineNumber)
+		{
+			setHudMessage('pageError', errorMsg);
+		};
 
         window.castReceiverManager = null;
         window.mediaManager = null;
