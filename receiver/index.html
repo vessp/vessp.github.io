@@ -569,6 +569,21 @@ limitations under the License.
                         'mediaElement': window.mediaElement,
                         'url': url
                     });
+					
+					window.mediaHost.updateManifestRequestInfo = function(requestInfo) {
+					  if (!requestInfo.url) {
+						  requestInfo.url = this.url;
+					  }
+					  requestInfo.withCredentials = true;
+					};
+
+					window.mediaHost.updateLicenseRequestInfo = function(requestInfo) {
+					  requestInfo.withCredentials = true;
+					};
+
+					window.mediaHost.updateSegmentRequestInfo = function(requestInfo) {
+					  requestInfo.withCredentials = true;
+					};
 
                     window.mediaHost.onError = function (errorCode) {
                         console.error('### HOST ERROR - Fatal Error: code = ' + errorCode);
@@ -576,7 +591,7 @@ limitations under the License.
                         if (window.mediaPlayer !== null) {
                             window.mediaPlayer.unload();
                         }
-                    }
+                    };
 
                     var initialTimeIndexSeconds = event.data['media']['currentTime'] || 0;
                     // TODO: real code would know what content it was going to access and this would not be here.
