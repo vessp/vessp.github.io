@@ -46,7 +46,7 @@ function initializeCastApi() {
   
   //var applicationID = '0FD55629';
   //var applicationID = '705DB4F3';
-  var applicationID = '0FD55629';//github receiver
+  var applicationID = '0FD55629';
   
   var sessionRequest = new chrome.cast.SessionRequest(applicationID, 'asdf');
   var apiConfig = new chrome.cast.ApiConfig(sessionRequest,
