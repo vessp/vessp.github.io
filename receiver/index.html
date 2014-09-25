@@ -77,6 +77,7 @@ limitations under the License.
         <div>Media Type: <span id="mediaType">Unkown</span></div>
         <div>Media Protocol: <span id="mediaProtocol">Unknown</span></div>
 		<div>Page Error: <span id="pageError">Unknown</span></div>
+		<div>Page Log: <span id="pageLog">Unknown</span></div>
     </div>
     <video id="receiverVideoElement"></video>
 
@@ -122,43 +123,43 @@ limitations under the License.
              http://www.w3.org/2010/05/video/mediaevents.html for more info.
              **/
             window.mediaElement.addEventListener('loadstart', function(e){
-                console.log("######### MEDIA ELEMENT LOAD START");
+                myLog("######### MEDIA ELEMENT LOAD START");
                 setHudMessage('mediaElementState','Load Start');
             });
             window.mediaElement.addEventListener('loadeddata', function(e){
-                console.log("######### MEDIA ELEMENT DATA LOADED");
+                myLog("######### MEDIA ELEMENT DATA LOADED");
                 setHudMessage('mediaElementState','Data Loaded');
             });
             window.mediaElement.addEventListener('canplay', function(e){
-                console.log("######### MEDIA ELEMENT CAN PLAY");
+                myLog("######### MEDIA ELEMENT CAN PLAY");
                 setHudMessage('mediaElementState','Can Play');
             });
             window.mediaElement.addEventListener('ended', function(e){
-                console.log("######### MEDIA ELEMENT ENDED");
+                myLog("######### MEDIA ELEMENT ENDED");
                 setHudMessage('mediaElementState','Ended');
             });
             window.mediaElement.addEventListener('playing', function(e){
-                console.log("######### MEDIA ELEMENT PLAYING");
+                myLog("######### MEDIA ELEMENT PLAYING");
                 setHudMessage('mediaElementState','Playing');
             });
             window.mediaElement.addEventListener('waiting', function(e){
-                console.log("######### MEDIA ELEMENT WAITING");
+                myLog("######### MEDIA ELEMENT WAITING");
                 setHudMessage('mediaElementState','Waiting');
             });
             window.mediaElement.addEventListener('stalled', function(e){
-                console.log("######### MEDIA ELEMENT STALLED");
+                myLog("######### MEDIA ELEMENT STALLED");
                 setHudMessage('mediaElementState','Stalled');
             });
             window.mediaElement.addEventListener('error', function(e){
-                console.log("######### MEDIA ELEMENT ERROR " + e);
+                myLog("######### MEDIA ELEMENT ERROR " + e);
                 setHudMessage('mediaElementState','Error');
             });
             window.mediaElement.addEventListener('abort', function(e){
-                console.log("######### MEDIA ELEMENT ABORT " + e);
+                myLog("######### MEDIA ELEMENT ABORT " + e);
                 setHudMessage('mediaElementState','Abort');
             });
             window.mediaElement.addEventListener('suspend', function(e){
-                console.log("######### MEDIA ELEMENT SUSPEND " + e);
+                myLog("######### MEDIA ELEMENT SUSPEND " + e);
                 setHudMessage('mediaElementState','Suspended');
             });
             window.mediaElement.addEventListener('progress', function(e){
@@ -166,11 +167,11 @@ limitations under the License.
             });
 
             window.mediaElement.addEventListener('seeking', function(e){
-                console.log("######### MEDIA ELEMENT SEEKING " + e);
+                myLog("######### MEDIA ELEMENT SEEKING " + e);
                 setHudMessage('mediaElementState','Seeking');
             });
             window.mediaElement.addEventListener('seeked', function(e){
-                console.log("######### MEDIA ELEMENT SEEKED " + e);
+                myLog("######### MEDIA ELEMENT SEEKED " + e);
                 setHudMessage('mediaElementState','Seeked');
             });
 
@@ -205,7 +206,7 @@ limitations under the License.
              * There is no default handler
              */
             window.castReceiverManager.onReady = function(event) {
-                console.log("### Cast Receiver Manager is READY: " + JSON.stringify(event));
+                myLog("### Cast Receiver Manager is READY: " + JSON.stringify(event));
                 setHudMessage('castReceiverManagerMessage', 'READY: ' + JSON.stringify(event));
                 setHudMessage('applicationState','Loaded. Started. Ready.');
             }
@@ -218,7 +219,7 @@ limitations under the License.
              * There is no default handler
              */
             window.castReceiverManager.onSenderConnected = function(event) {
-                console.log("### Cast Receiver Manager - Sender Connected : " + JSON.stringify(event));
+                myLog("### Cast Receiver Manager - Sender Connected : " + JSON.stringify(event));
                 setHudMessage('castReceiverManagerMessage', 'Sender Connected: ' + JSON.stringify(event));
 
                 // TODO - add sender and grab CastChannel from CastMessageBus.getCastChannel(senderId)
@@ -234,7 +235,7 @@ limitations under the License.
              * There is no default handler
              */
             window.castReceiverManager.onSenderDisconnected = function(event) {
-                console.log("### Cast Receiver Manager - Sender Disconnected : " + JSON.stringify(event));
+                myLog("### Cast Receiver Manager - Sender Disconnected : " + JSON.stringify(event));
                 setHudMessage('castReceiverManagerMessage', 'Sender Disconnected: ' + JSON.stringify(event));
 
                 var senders = window.castReceiverManager.getSenders();
@@ -249,11 +250,11 @@ limitations under the License.
              * There is no default handler
              */
             window.castReceiverManager.onSystemVolumeChanged = function(event) {
-                console.log("### Cast Receiver Manager - System Volume Changed : " + JSON.stringify(event));
+                myLog("### Cast Receiver Manager - System Volume Changed : " + JSON.stringify(event));
                 setHudMessage('castReceiverManagerMessage', 'System Volume Changed: ' + JSON.stringify(event));
 
                 // See cast.receiver.media.Volume
-                console.log("### Volume: " + event.data['level'] + " is muted? " + event.data['muted']);
+                myLog("### Volume: " + event.data['level'] + " is muted? " + event.data['muted']);
                 setHudMessage('volumeMessage', 'Level: ' + event.data['level'] + ' -- muted? ' + event.data['muted']);
             }
 
@@ -272,7 +273,7 @@ limitations under the License.
              * There is no default handler for this event type.
              */
             window.castReceiverManager.onVisibilityChanged = function(event) {
-                console.log("### Cast Receiver Manager - Visibility Changed : " + JSON.stringify(event));
+                myLog("### Cast Receiver Manager - Visibility Changed : " + JSON.stringify(event));
                 setHudMessage('castReceiverManagerMessage', 'Visibility Changed: ' + JSON.stringify(event));
 
                 /** check if visible and pause media if not - add a timer to tear down after a period of time
@@ -321,12 +322,12 @@ limitations under the License.
              * In the case of the message value not being show - the assumed value is hide.
              **/
             window.messageBus.onMessage = function(event) {
-                console.log("### Message Bus - Media Message: " + JSON.stringify(event));
+                myLog("### Message Bus - Media Message: " + JSON.stringify(event));
                 setHudMessage('messageBusMessage', event);
 
-                console.log("### CUSTOM MESSAGE: " + JSON.stringify(event));
+                myLog("### CUSTOM MESSAGE: " + JSON.stringify(event));
                 // show/hide messages
-                console.log(event['data']);
+                myLog(event['data']);
                 if(event['data']==='show') {
                     document.getElementById('messages').style.display = 'block';
                 } else {
@@ -348,7 +349,7 @@ limitations under the License.
              * Called when the media ends
              */
             window.mediaManager.onEnded = function() {
-                console.log("### Media Manager - ENDED: " + JSON.stringify(event));
+                myLog("### Media Manager - ENDED: " + JSON.stringify(event));
                 setHudMessage('mediaManagerMessage', 'ENDED');
 
                 window.mediaManager['onEndedOrig']();
@@ -365,7 +366,7 @@ limitations under the License.
              * @param obj
              */
             window.mediaManager.onError = function(obj) {
-                console.log("### Media Manager - error: " + JSON.stringify(obj));
+                myLog("### Media Manager - error: " + JSON.stringify(obj));
                 setHudMessage('mediaManagerMessage', 'ERROR - ' + JSON.stringify(obj));
 
                 window.mediaManager['onErrorOrig'](obj);
@@ -382,7 +383,7 @@ limitations under the License.
              * @param event
              */
             window.mediaManager.onGetStatus = function(event) {
-                console.log("### Media Manager - GET STATUS: " + JSON.stringify(event));
+                myLog("### Media Manager - GET STATUS: " + JSON.stringify(event));
                 setHudMessage('mediaManagerMessage', 'GET STATUS ' + JSON.stringify(event));
 
                 window.mediaManager['onGetStatusOrig'](event);
@@ -400,7 +401,7 @@ limitations under the License.
              * @param event
              */
             window.mediaManager.onLoadMetadataError = function(event) {
-                console.log("### Media Manager - LOAD METADATA ERROR: " + JSON.stringify(event));
+                myLog("### Media Manager - LOAD METADATA ERROR: " + JSON.stringify(event));
                 setHudMessage('mediaManagerMessage', 'LOAD METADATA ERROR: ' + JSON.stringify(event));
 
                 window.mediaManager['onLoadMetadataErrorOrig'](event);
@@ -430,7 +431,7 @@ limitations under the License.
              * @param event
              */
             window.mediaManager.onLoadMetadataLoaded = function(event) {
-                console.log("### Media Manager - LOADED METADATA: " + JSON.stringify(event));
+                myLog("### Media Manager - LOADED METADATA: " + JSON.stringify(event));
                 setHudMessage('mediaManagerMessage', 'LOADED METADATA: ' + JSON.stringify(event));
 
                 window.mediaManager['onLoadMetadataOrig'](event);
@@ -448,7 +449,7 @@ limitations under the License.
              * @param event
              */
             window.mediaManager.onPause = function(event) {
-                console.log("### Media Manager - PAUSE: " + JSON.stringify(event));
+                myLog("### Media Manager - PAUSE: " + JSON.stringify(event));
                 setHudMessage('mediaManagerMessage', 'PAUSE: ' + JSON.stringify(event));
 
                 window.mediaManager['onPauseOrig'](event);
@@ -466,7 +467,7 @@ limitations under the License.
              * @param event
              */
             window.mediaManager.onPlay = function(event) {
-                console.log("### Media Manager - PLAY: " + JSON.stringify(event));
+                myLog("### Media Manager - PLAY: " + JSON.stringify(event));
                 setHudMessage('mediaManagerMessage', 'PLAY: ' + JSON.stringify(event));
 
                 window.mediaManager['onPlayOrig'](event);
@@ -486,7 +487,7 @@ limitations under the License.
              * @param event
              */
             window.mediaManager.onSeek = function(event) {
-                console.log("### Media Manager - SEEK: " + JSON.stringify(event));
+                myLog("### Media Manager - SEEK: " + JSON.stringify(event));
                 setHudMessage('mediaManagerMessage', 'SEEK: ' + JSON.stringify(event));
 
                 window.mediaManager['onSeekOrig'](event);
@@ -504,7 +505,7 @@ limitations under the License.
              * @param event
              */
             window.mediaManager.onSetVolume = function(event) {
-                console.log("### Media Manager - SET VOLUME: " + JSON.stringify(event));
+                myLog("### Media Manager - SET VOLUME: " + JSON.stringify(event));
                 setHudMessage('mediaManagerMessage', 'SET VOLUME: ' + JSON.stringify(event));
 
                 window.mediaManager['onSetVolumeOrig'](event);
@@ -527,7 +528,7 @@ limitations under the License.
              * @param event
              */
             window.mediaManager.onStop = function(event) {
-                console.log("### Media Manager - STOP: " + JSON.stringify(event));
+                myLog("### Media Manager - STOP: " + JSON.stringify(event));
                 setHudMessage('mediaManagerMessage', 'STOP: ' + JSON.stringify(event));
 
                 window.mediaManager['onStopOrig'](event);
@@ -550,7 +551,7 @@ limitations under the License.
              * @param event
              */
             window.mediaManager.onLoad = function(event) {
-                console.log("### Media Manager - LOAD: " + JSON.stringify(event));
+                myLog("### Media Manager - LOAD: " + JSON.stringify(event));
                 setHudMessage('mediaManagerMessage', 'LOAD ' + JSON.stringify(event));
 
                 // TODO - setup for load here
@@ -608,7 +609,7 @@ limitations under the License.
                     } else if (ext === 'ism/') {
                         protocol = cast.player.api.CreateSmoothStreamingProtocol(window.mediaHost);
                     }
-                    console.log('### Media Protocol Identified as ' + ext);
+                    myLog('### Media Protocol Identified as ' + ext);
                     setHudMessage('mediaProtocol', ext);
 
                     if (protocol === null) {
@@ -625,7 +626,7 @@ limitations under the License.
 
             }
 
-            console.log('### Application Loaded. Starting system.');
+            myLog('### Application Loaded. Starting system.');
             setHudMessage('applicationState','Loaded. Starting up.');
 
             /**
@@ -657,6 +658,12 @@ limitations under the License.
              * to listen for the events it is interested on.
              */
             window.castReceiverManager.start(appConfig);
+			
+			function myLog(message)
+			{
+				console.log(message);
+				document.getElementById('pageLog').innerHTML += JSON.stringify(message);
+			}
         }
     </script>
 </body>
