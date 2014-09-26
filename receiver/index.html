@@ -206,8 +206,8 @@ limitations under the License.
              * There is no default handler
              */
             window.castReceiverManager.onReady = function(event) {
-                console.log("### Cast Receiver Manager is READY: " + JSON.stringify(event));
-                setHudMessage('castReceiverManagerMessage', 'READY: ' + JSON.stringify(event));
+                console.log("### Cast Receiver Manager is READY: " + event);
+                setHudMessage('castReceiverManagerMessage', 'READY: ' + event);
                 setHudMessage('applicationState','Loaded. Started. Ready.');
             }
 
