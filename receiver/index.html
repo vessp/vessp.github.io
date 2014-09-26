@@ -74,7 +74,8 @@ limitations under the License.
         <div>Message Bus Message: <span  id="messageBusMessage">-</span></div>
         <div>Volume: <span  id="volumeMessage">Unknown</span></div>
         <div>Host State: <span id="mediaHostState">Unknown</span></div>
-        <div>Media Type: <span id="mediaType">Unkown</span></div>
+        <div>Media Type: <span id="mediaType">Unknown</span></div>
+		<div>Media Path: <span id="mediaPath">Unknown</span></div>
         <div>Media Protocol: <span id="mediaProtocol">Unknown</span></div>
 		<div>Page Error: <span id="pageError">Unknown</span></div>
     </div>
@@ -596,6 +597,8 @@ limitations under the License.
                     var initialTimeIndexSeconds = event.data['media']['currentTime'] || 0;
                     // TODO: real code would know what content it was going to access and this would not be here.
                     var protocol = null;
+					
+					setHudMessage('mediaPath', url);
 
                     var parser = document.createElement('a');
                     parser.href = url;
