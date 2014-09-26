@@ -219,8 +219,8 @@ limitations under the License.
              * There is no default handler
              */
             window.castReceiverManager.onSenderConnected = function(event) {
-                console.log("### Cast Receiver Manager - Sender Connected : " + JSON.stringify(event));
-                setHudMessage('castReceiverManagerMessage', 'Sender Connected: ' + JSON.stringify(event));
+                console.log("### Cast Receiver Manager - Sender Connected : " +event);
+                setHudMessage('castReceiverManagerMessage', 'Sender Connected: ' + event);
 
                 // TODO - add sender and grab CastChannel from CastMessageBus.getCastChannel(senderId)
                 var senders = window.castReceiverManager.getSenders();
