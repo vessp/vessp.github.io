@@ -1,0 +1,20 @@
+.background {
+  background: black; //center no-repeat url(background.png);
+}
+
+.logo {
+  background-image: url(epix-loading-logo.png);
+}
+
+.progressBar {
+  background-color: rgb(238, 255, 65);
+}
+
+.splash {
+  background-image: url(epix-loading-logo.png);
+}
+
+.watermark {
+  background-image: url(epix-logo.png);
+  background-size: 57px 57px;
+}
