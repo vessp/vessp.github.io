@@ -49,7 +49,8 @@ function initializeCastApi() {
   //var applicationID = '0FD55629';//github receiver
   var applicationID = '9B4052E5';//github dev receiver
   
-  var sessionRequest = new chrome.cast.SessionRequest(applicationID);
+  var sessionRequest = new chrome.cast.SessionRequest(applicationID, 
+	[chrome.cast.Capability.AUDIO_OUT, chrome.cast.Capability.VIDEO_OUT], 30000);
   var apiConfig = new chrome.cast.ApiConfig(sessionRequest,
     sessionListener,
     receiverListener);
