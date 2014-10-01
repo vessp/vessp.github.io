@@ -235,7 +235,7 @@ function loadMedia() {
   console.log("loading..." + currentMediaURL);
   appendMessage("loading..." + currentMediaURL);
   var mediaInfo = new chrome.cast.media.MediaInfo(currentMediaURL);
-  mediaInfo.contentType = 'video/mp4';
+  mediaInfo.contentType = 'application/octet-stream';//'video/mp4';
   var request = new chrome.cast.media.LoadRequest(mediaInfo);
   request.autoplay = true;
   request.currentTime = 0;
