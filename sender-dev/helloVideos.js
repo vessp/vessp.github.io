@@ -42,12 +42,12 @@ function initializeCastApi() {
   // default app ID to the default media receiver app
   // optional: you may change it to your own app ID/receiver
   
-  //var applicationID = chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID;
+  var applicationID = chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID;
   
   //var applicationID = '0FD55629';
   //var applicationID = '705DB4F3';
-  var applicationID = '0FD55629';//github receiver
-  //var applicationID = '9B4052E5';//github dev receiver
+  //var applicationID = '0FD55629';//github custom receiver
+  //var applicationID = '9B4052E5';//github custom dev receiver
   //var applicationID = '095E018A';//github styled receiver
   
   var sessionRequest = new chrome.cast.SessionRequest(applicationID, 
