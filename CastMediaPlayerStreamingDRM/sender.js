@@ -106,12 +106,7 @@ var mediaAlertMessages = [
 /**
  * Application ID
  */
- var applicationID = chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID;
-  
-  //var applicationID = '0FD55629';
-  //var applicationID = '705DB4F3';
-  //var applicationID = '0FD55629';//github receiver
-//var applicationID = 'YOUR_APP_ID';
+ var applicationID = 'A975235D';
 
 /**
  * Current media session
