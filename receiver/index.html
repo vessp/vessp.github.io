@@ -577,21 +577,21 @@ limitations under the License.
 						  requestInfo.url = this.url;
 					  }
 					  requestInfo.withCredentials = true;
-					  requestInfo.headers = {};
-					  requestInfo.headers['Origin'] = window.location.origin;
+					  //requestInfo.headers = {};
+					 // requestInfo.headers['Origin'] = window.location.origin;
 					  setHudMessage('volumeMessage', requestInfo);
 					};
 
 					window.mediaHost.updateLicenseRequestInfo = function(requestInfo) {
 					  requestInfo.withCredentials = true;
-					  requestInfo.headers = {};
-					  requestInfo.headers['Origin'] = window.location.origin;
+					  //requestInfo.headers = {};
+					  //requestInfo.headers['Origin'] = window.location.origin;
 					};
 
 					window.mediaHost.updateSegmentRequestInfo = function(requestInfo) {
 					  requestInfo.withCredentials = true;
-					  requestInfo.headers = {};
-					  requestInfo.headers['Origin'] = window.location.origin;
+					  //requestInfo.headers = {};
+					  //requestInfo.headers['Origin'] = window.location.origin;
 					};
 
                     window.mediaHost.onError = function (errorCode) {
