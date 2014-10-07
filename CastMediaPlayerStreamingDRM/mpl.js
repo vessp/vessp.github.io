@@ -20,9 +20,9 @@ var audioStreamIndex = -1;  // index for audio stream
 var licenseUrl = null;  // license server URL
 var videoQualityIndex = -1;  // index for video quality level
 var audioQualityIndex = -1;  // index for audio quality level
-var manifestCredentials = true;  // a flag to indicate manifest credentials
-var segmentCredentials = true;  // a flag to indicate segment credentials
-var licenseCredentials = true;  // a flag to indicate license credentials
+var manifestCredentials = false;  // a flag to indicate manifest credentials
+var segmentCredentials = false;  // a flag to indicate segment credentials
+var licenseCredentials = false;  // a flag to indicate license credentials
 var streamVideoBitrates;  // bitrates of video stream selected
 var streamAudioBitrates;  // bitrates of audio stream selected
 
