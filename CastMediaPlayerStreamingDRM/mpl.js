@@ -617,6 +617,9 @@ onload = function() {
             requestInfo.url = url;
           }
           requestInfo.withCredentials = true;
+		  
+		  requestInfo.headers = {};
+		  requestInfo.headers['Origin'] = window.location.origin;
         };
       }
       if (segmentCredentials) {
@@ -626,13 +629,16 @@ onload = function() {
           // example of setting headers
           requestInfo.headers = {};
           //requestInfo.headers['content-type'] = 'text/xml;charset=utf-8';
-		  requestInfo.headers['origin'] = 'https://vessp.github.io';
+		  requestInfo.headers['Origin'] = window.location.origin;
         };
       }
       if (licenseCredentials) {
         mediaHost.updateLicenseRequestInfo = function(requestInfo) {
           // example of setting CORS withCredentials
           requestInfo.withCredentials = true;
+		  
+		  requestInfo.headers = {};
+		  requestInfo.headers['Origin'] = window.location.origin;
         };
       }
 
