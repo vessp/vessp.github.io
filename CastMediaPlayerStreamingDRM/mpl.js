@@ -670,7 +670,7 @@ onload = function() {
 
       mediaHost.onError = function(errorCode, requestStatus) {
         console.error('### HOST ERROR - Fatal Error: code = ' + errorCode);
-        setDebugMessage('mediaHostState', 'Fatal Error: code = ' + errorCode);
+        setDebugMessage('mediaHostState', 'Fatal Error: code = ' + errorCode + ', ' + requestStatus);
         if (mediaPlayer !== null) {
           mediaPlayer.unload();
         }
