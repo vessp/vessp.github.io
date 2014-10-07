@@ -137,5 +137,6 @@ div.imageSub div.label {
 
 .vertical {
     -webkit-transform: rotate(90deg);
-
+    font-size:85%;
+    margin-top:20px;
 }
