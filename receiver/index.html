@@ -77,9 +77,8 @@ limitations under the License.
         <div>Media Type: <span id="mediaType">Unknown</span></div>
 		<div>Media Path: <span id="mediaPath">Unknown</span></div>
         <div>Media Protocol: <span id="mediaProtocol">Unknown</span></div>
+		<div>Page Error: <span id="pageError">Unknown</span></div>
 		<div>headers put in</div>
-		<div>Page Error2: <span id="pageError">Unknown</span></div>
-		
     </div>
     <video id="receiverVideoElement"></video>
 
@@ -579,19 +578,20 @@ limitations under the License.
 					  }
 					  requestInfo.withCredentials = true;
 					  requestInfo.headers = {};
-					  requestInfo.headers['origin'] = 'https://vessp.github.io';
+					  requestInfo.headers['Origin'] = window.location.origin;
+					  alert(requestInfo);
 					};
 
 					window.mediaHost.updateLicenseRequestInfo = function(requestInfo) {
 					  requestInfo.withCredentials = true;
 					  requestInfo.headers = {};
-					  requestInfo.headers['origin'] = 'https://vessp.github.io';
+					  requestInfo.headers['Origin'] = window.location.origin;
 					};
 
 					window.mediaHost.updateSegmentRequestInfo = function(requestInfo) {
 					  requestInfo.withCredentials = true;
 					  requestInfo.headers = {};
-					  requestInfo.headers['origin'] = 'https://vessp.github.io';
+					  requestInfo.headers['Origin'] = window.location.origin;
 					};
 
                     window.mediaHost.onError = function (errorCode) {
