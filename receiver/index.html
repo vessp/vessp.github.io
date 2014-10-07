@@ -576,14 +576,20 @@ limitations under the License.
 						  requestInfo.url = this.url;
 					  }
 					  requestInfo.withCredentials = true;
+					  requestInfo.headers = {};
+					  requestInfo.headers['origin'] = 'https://vessp.github.io';
 					};
 
 					window.mediaHost.updateLicenseRequestInfo = function(requestInfo) {
 					  requestInfo.withCredentials = true;
+					  requestInfo.headers = {};
+					  requestInfo.headers['origin'] = 'https://vessp.github.io';
 					};
 
 					window.mediaHost.updateSegmentRequestInfo = function(requestInfo) {
 					  requestInfo.withCredentials = true;
+					  requestInfo.headers = {};
+					  requestInfo.headers['origin'] = 'https://vessp.github.io';
 					};
 
                     window.mediaHost.onError = function (errorCode) {
