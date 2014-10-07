@@ -78,7 +78,7 @@ limitations under the License.
 		<div>Media Path: <span id="mediaPath">Unknown</span></div>
         <div>Media Protocol: <span id="mediaProtocol">Unknown</span></div>
 		<div>Page Error: <span id="pageError">Unknown</span></div>
-		<div>headers put in</div>
+		<div>headers put in2</div>
     </div>
     <video id="receiverVideoElement"></video>
 
@@ -579,7 +579,7 @@ limitations under the License.
 					  requestInfo.withCredentials = true;
 					  requestInfo.headers = {};
 					  requestInfo.headers['Origin'] = window.location.origin;
-					  alert(requestInfo);
+					  setHudMessage('volumeMessage', requestInfo);
 					};
 
 					window.mediaHost.updateLicenseRequestInfo = function(requestInfo) {
