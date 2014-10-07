@@ -618,8 +618,8 @@ onload = function() {
           }
           requestInfo.withCredentials = true;
 		  
-		  requestInfo.headers = {};
-		  requestInfo.headers['Origin'] = window.location.origin;
+		  //requestInfo.headers = {};
+		  //requestInfo.headers['Origin'] = window.location.origin;
         };
       }
       if (segmentCredentials) {
@@ -627,9 +627,9 @@ onload = function() {
           // example of setting CORS withCredentials
           requestInfo.withCredentials = true;
           // example of setting headers
-          requestInfo.headers = {};
+          //requestInfo.headers = {};
           //requestInfo.headers['content-type'] = 'text/xml;charset=utf-8';
-		  requestInfo.headers['Origin'] = window.location.origin;
+		  //requestInfo.headers['Origin'] = window.location.origin;
         };
       }
       if (licenseCredentials) {
@@ -637,8 +637,8 @@ onload = function() {
           // example of setting CORS withCredentials
           requestInfo.withCredentials = true;
 		  
-		  requestInfo.headers = {};
-		  requestInfo.headers['Origin'] = window.location.origin;
+		  //requestInfo.headers = {};
+		  //requestInfo.headers['Origin'] = window.location.origin;
         };
       }
 
