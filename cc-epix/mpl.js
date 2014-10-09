@@ -35,12 +35,16 @@ var mediaHost = null;  // an instance of cast.player.api.Host
 var mediaProtocol = null;  // an instance of cast.player.api.Protocol
 var mediaPlayer = null;  // an instance of cast.player.api.Player
 
+var playerDiv = null;
+
 /*
  * onLoad method as entry point to initialize custom receiver
  */
 onload = function() {
   mediaElement = document.getElementById('receiverVideoElement');
   mediaElement.autoplay = true;
+  
+  playerdiv = document.getElementById('player');
 
   /**
   play – The process of play has started
@@ -488,7 +492,14 @@ onload = function() {
     console.log('### Media Manager - PAUSE: ' + JSON.stringify(event));
     setDebugMessage('mediaManagerMessage', 'PAUSE: ' + JSON.stringify(event));
     mediaManager['onPauseOrig'](event);
+	
+	drawPlayerState('video pause');
   };
+  
+  function drawPlayerState(state)
+  {
+	playerDiv.className = 'player ' + state;//(self.type_ || '') + ' ' + state;
+  }
 
   /**
   * Default - Processes the play event.
@@ -528,6 +539,8 @@ onload = function() {
     setDebugMessage('mediaManagerMessage', 'SEEK: ' + JSON.stringify(event));
 
     mediaManager['onSeekOrig'](event);
+	
+	drawPlayerState('video seeking');
   };
 
   /**
@@ -617,7 +630,7 @@ onload = function() {
             requestInfo.url = url;
           }
 		  
-		  if (manifestCredentials)
+		  //if (manifestCredentials)
 			requestInfo.withCredentials = true;
 		  
 		  requestInfo.headers = {};
@@ -627,7 +640,7 @@ onload = function() {
      
         mediaHost.updateSegmentRequestInfo = function(requestInfo) {
           // example of setting CORS withCredentials
-		   if (segmentCredentials)
+		   //if (segmentCredentials)
 			requestInfo.withCredentials = true;
           // example of setting headers
           requestInfo.headers = {};
@@ -638,7 +651,7 @@ onload = function() {
       
         mediaHost.updateLicenseRequestInfo = function(requestInfo) {
           // example of setting CORS withCredentials
-		   if (licenseCredentials)
+		  // if (licenseCredentials)
 			requestInfo.withCredentials = true;
 		  
 		  requestInfo.headers = {};
