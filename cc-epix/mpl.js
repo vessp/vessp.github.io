@@ -44,7 +44,7 @@ onload = function() {
   mediaElement = document.getElementById('receiverVideoElement');
   mediaElement.autoplay = true;
   
-  playerdiv = document.getElementById('player');
+  playerDiv = document.getElementById('player');
 
   /**
   play – The process of play has started
