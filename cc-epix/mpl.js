@@ -638,12 +638,11 @@ onload = function() {
 
       
         mediaHost.updateManifestRequestInfo = function(requestInfo) {
-          // example of setting CORS withCredentials
           if (!requestInfo.url) {
             requestInfo.url = url;
           }
 		  
-		  //if (manifestCredentials)
+		  if (manifestCredentials)
 			requestInfo.withCredentials = true;
 		  
 		  requestInfo.headers = {};
@@ -652,10 +651,10 @@ onload = function() {
       
      
         mediaHost.updateSegmentRequestInfo = function(requestInfo) {
-          // example of setting CORS withCredentials
-		   //if (segmentCredentials)
+		
+		   if (segmentCredentials)
 			requestInfo.withCredentials = true;
-          // example of setting headers
+          
           requestInfo.headers = {};
           //requestInfo.headers['content-type'] = 'text/xml;charset=utf-8';
 		  requestInfo.headers['Origin'] = window.location.origin;
@@ -663,8 +662,8 @@ onload = function() {
       
       
         mediaHost.updateLicenseRequestInfo = function(requestInfo) {
-          // example of setting CORS withCredentials
-		  // if (licenseCredentials)
+          
+		   if (licenseCredentials)
 			requestInfo.withCredentials = true;
 		  
 		  requestInfo.headers = {};
