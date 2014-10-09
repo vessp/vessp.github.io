@@ -610,37 +610,41 @@ onload = function() {
         'url': url
       });
 
-      if (manifestCredentials) {
+      
         mediaHost.updateManifestRequestInfo = function(requestInfo) {
           // example of setting CORS withCredentials
           if (!requestInfo.url) {
             requestInfo.url = url;
           }
-          requestInfo.withCredentials = true;
+		  
+		  if (manifestCredentials)
+			requestInfo.withCredentials = true;
 		  
 		  requestInfo.headers = {};
 		  requestInfo.headers['Origin'] = window.location.origin;
         };
-      }
-      if (segmentCredentials) {
+      
+     
         mediaHost.updateSegmentRequestInfo = function(requestInfo) {
           // example of setting CORS withCredentials
-          requestInfo.withCredentials = true;
+		   if (segmentCredentials)
+			requestInfo.withCredentials = true;
           // example of setting headers
           requestInfo.headers = {};
           //requestInfo.headers['content-type'] = 'text/xml;charset=utf-8';
 		  requestInfo.headers['Origin'] = window.location.origin;
         };
-      }
-      if (licenseCredentials) {
+      
+      
         mediaHost.updateLicenseRequestInfo = function(requestInfo) {
           // example of setting CORS withCredentials
-          requestInfo.withCredentials = true;
+		   if (licenseCredentials)
+			requestInfo.withCredentials = true;
 		  
 		  requestInfo.headers = {};
 		  requestInfo.headers['Origin'] = window.location.origin;
         };
-      }
+      
 
       if (licenseUrl) {
         mediaHost.licenseUrl = licenseUrl;
@@ -670,7 +674,7 @@ onload = function() {
 
       mediaHost.onError = function(errorCode, requestStatus) {
         console.error('### HOST ERROR - Fatal Error: code = ' + errorCode);
-        setDebugMessage('mediaHostState', 'Fatal Error: code = ' + errorCode);
+        setDebugMessage('mediaHostState', 'Fatal Error: code = ' + errorCode + ', ' + JSON.stringify(requestStatus));
         if (mediaPlayer !== null) {
           mediaPlayer.unload();
         }
