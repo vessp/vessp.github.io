@@ -608,6 +608,17 @@ onload = function() {
   mediaManager.onLoad = function(event) {
     console.log('### Media Manager - LOAD: ' + JSON.stringify(event));
     setDebugMessage('mediaManagerMessage', 'LOAD ' + JSON.stringify(event));
+	
+	
+	
+	
+	drawPlayerState('video launching');
+	
+	
+	
+	
+	
+	
 
     if (mediaPlayer !== null) {
       mediaPlayer.unload(); // Ensure unload before loading again
