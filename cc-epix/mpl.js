@@ -495,7 +495,7 @@ onload = function() {
     setDebugMessage('mediaManagerMessage', 'PAUSE: ' + JSON.stringify(event));
     mediaManager['onPauseOrig'](event);
 	
-	drawPlayerState('video pause');
+	drawPlayerState('video paused');
   };
   
   function drawPlayerState(state)
