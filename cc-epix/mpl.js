@@ -147,6 +147,8 @@ onload = function() {
   mediaElement.addEventListener('playing', function(e) {
     console.log('######### MEDIA ELEMENT PLAYING');
     setDebugMessage('mediaElementState', 'Playing');
+	
+	drawPlayerState('video playing');
   });
   mediaElement.addEventListener('waiting', function(e) {
     console.log('######### MEDIA ELEMENT WAITING');
