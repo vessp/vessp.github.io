@@ -1,0 +1,38 @@
+body {
+	overflow:hidden;
+}
+video {
+	height:auto;
+	width:100%;
+	text-align: center;
+	border:0px solid silver;
+	display: block;
+	vertical-align: middle;
+	color: #FFFFFF;
+	background-color: #000000;
+	font-weight: bold;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size:40px;
+	float:left;
+	z-index: 1;
+	position:absolute;
+}
+#messages {
+	color: #FFFFFF;
+	float: left;
+	top:10px;
+	left:20px;
+	margin-left: 5px;
+	margin-top:  5px;
+	z-index:2;
+	position:absolute;
+	font-weight: bold;
+	font-size: 90%;
+	width:95%;
+	background-color: rgba(0,0,0,0.5);
+	opacity:0.6;
+}
+
+#messages span {
+	font-weight: normal;
+}
