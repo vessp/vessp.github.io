@@ -154,10 +154,10 @@ body {
   background-size: cover;
   border: 0;
   float: left;
-  height: 29px;
+  height: 36px;
   margin-left: -4px;
   margin-top: -3px;
-  width: 29px;
+  width: 32px;
 }
 
 .player .overlay {
@@ -392,12 +392,7 @@ body {
   -webkit-transition: opacity 1s linear 5s;
 }
 
-.player[state="paused"] .controls-cur-time,
-.player[state="paused"] .controls-total-time,
-.player[state="paused"] .controls-progress {
-  opacity: 0;
-  -webkit-transition: opacity 1s linear 5s;
-}
+//TODO fade out progress bar
 
 /* ------------------------------------------------- */
 /* Playing                                           */
