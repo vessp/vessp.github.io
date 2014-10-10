@@ -445,7 +445,7 @@ sampleplayer.CastPlayer.prototype.loadMetadata_ = function(media) {
   sampleplayer.setInnerText_(titleElement, metadata.title);
   
   var specsElement = this.element_.querySelector('.media-specs');
-  sampleplayer.setInnerText_(specsElement, "PG-13 | 2013 | 110 min | Action, Adventure");//metadata.specs);
+  sampleplayer.setInnerText_(specsElement, metadata.artist);//"PG-13 | 2013 | 110 min | Action, Adventure");//metadata.specs);
 
   var subtitleElement = this.element_.querySelector('.media-subtitle');
   sampleplayer.setInnerText_(subtitleElement, metadata['subtitle']);
@@ -969,6 +969,10 @@ sampleplayer.CastPlayer.prototype.onLoadSuccess_ = function() {
       } else {
         self.mediaElement_.play();
       }
+	  
+	   this.player_.enableCaptions(false);
+	  this.player_.enableCaptions(true, 'ttml', 'http://content.epixhd.com/assets/the-avengers/cc/the-avengers.xml');
+	  
     }, sampleplayer.MEDIA_INFO_DURATION_);
   }
 };
