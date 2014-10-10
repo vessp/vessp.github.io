@@ -17,6 +17,7 @@
 /* NOTE: this must be first statement in file to work on device */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400);
 
+
 /* ------------------------------------------------- */
 /* Animations                                        */
 /* ------------------------------------------------- */
@@ -60,7 +61,7 @@ body {
   background-repeat: no-repeat;
   background-position: bottom;
   position: absolute;
-  bottom: 50%;
+  top: 35%; //bottom: 50%;
   left: 50%;
   background-image: url("assets/logo.png");
   margin-top: -161px;
@@ -111,6 +112,15 @@ body {
 .player .media-info .media-title {
   color: rgba(255, 255, 255, 0.8);
   font-size: 44px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
+}
+
+.player .media-info .media-specs {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 21px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

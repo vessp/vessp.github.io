@@ -443,6 +443,9 @@ sampleplayer.CastPlayer.prototype.loadMetadata_ = function(media) {
   var metadata = media.metadata || {};
   var titleElement = this.element_.querySelector('.media-title');
   sampleplayer.setInnerText_(titleElement, metadata.title);
+  
+  var specsElement = this.element_.querySelector('.media-specs');
+  sampleplayer.setInnerText_(specsElement, metadata.specs);
 
   var subtitleElement = this.element_.querySelector('.media-subtitle');
   sampleplayer.setInnerText_(subtitleElement, metadata['subtitle']);
