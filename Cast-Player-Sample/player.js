@@ -445,7 +445,7 @@ sampleplayer.CastPlayer.prototype.loadMetadata_ = function(media) {
   sampleplayer.setInnerText_(titleElement, metadata.title);
   
   var specsElement = this.element_.querySelector('.media-specs');
-  sampleplayer.setInnerText_(specsElement, metadata.specs);
+  sampleplayer.setInnerText_(specsElement, "PG-13 | 2013 | 110 min | Action, Adventure");//metadata.specs);
 
   var subtitleElement = this.element_.querySelector('.media-subtitle');
   sampleplayer.setInnerText_(subtitleElement, metadata['subtitle']);

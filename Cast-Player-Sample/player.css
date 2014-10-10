@@ -154,10 +154,10 @@ body {
   background-size: cover;
   border: 0;
   float: left;
-  height: 36px;
+  height: 29px;
   margin-left: -4px;
   margin-top: -3px;
-  width: 32px;
+  width: 29px;
 }
 
 .player .overlay {
@@ -384,6 +384,18 @@ body {
 
 .player[state="paused"] .gradient {
   opacity: 0.1;
+  -webkit-transition: opacity 1s linear 5s;
+}
+
+.player[state="paused"] .watermark {
+  opacity: 0;
+  -webkit-transition: opacity 1s linear 5s;
+}
+
+.player[state="paused"] .controls-cur-time,
+.player[state="paused"] .controls-total-time,
+.player[state="paused"] .controls-progress {
+  opacity: 0;
   -webkit-transition: opacity 1s linear 5s;
 }
 
