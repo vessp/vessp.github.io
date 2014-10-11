@@ -1006,8 +1006,8 @@ sampleplayer.CastPlayer.prototype.onLoadSuccess_ = function() {
         self.mediaElement_.play();
       }
 	  
-	   this.player_.enableCaptions(false);
-	  this.player_.enableCaptions(true, 'ttml', 'http://content.epixhd.com/assets/the-avengers/cc/the-avengers.xml');
+	   //this.player_.enableCaptions(false);
+	  //this.player_.enableCaptions(true, 'ttml', 'http://content.epixhd.com/assets/the-avengers/cc/the-avengers.xml');
 	  
     }, sampleplayer.MEDIA_INFO_DURATION_);
   }
