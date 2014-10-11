@@ -498,6 +498,42 @@ sampleplayer.CastPlayer.prototype.loadVideo_ = function(info) {
       'url': url,
       'mediaElement': this.mediaElement_
     });
+	
+	
+	host.updateManifestRequestInfo = function(requestInfo) {
+	  if (!requestInfo.url) {
+		requestInfo.url = url;
+	  }
+	  
+	  //if (manifestCredentials)
+		requestInfo.withCredentials = true;
+	  
+	  //requestInfo.headers = {};
+	  //requestInfo.headers['Origin'] = window.location.origin;
+	};
+      
+     
+	host.updateSegmentRequestInfo = function(requestInfo) {
+	
+	   //if (segmentCredentials)
+		requestInfo.withCredentials = true;
+	  
+	  //requestInfo.headers = {};
+	  //requestInfo.headers['content-type'] = 'text/xml;charset=utf-8';
+	  //requestInfo.headers['Origin'] = window.location.origin;
+	};
+      
+      
+	host.updateLicenseRequestInfo = function(requestInfo) {
+	  
+	   //if (licenseCredentials)
+		//requestInfo.withCredentials = true;
+	  
+	  //requestInfo.headers = {};
+	  //requestInfo.headers['Origin'] = window.location.origin;
+	};
+	
+	
     host.onError = function() {
       // unload player and trigger error event on media element
       if (self.player_) {
