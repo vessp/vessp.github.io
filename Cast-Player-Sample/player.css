@@ -387,11 +387,12 @@ body {
   -webkit-transition: opacity 1s linear 5s;
 }
 
+/*
 .player[state="paused"] .watermark {
   opacity: 0;
   -webkit-transition: opacity 1s linear 5s;
 }
-
+*/
 //TODO fade out progress bar
 
 /* ------------------------------------------------- */
@@ -473,6 +474,10 @@ body {
   display: none;
 }
 
+.player[state="done"] .logo {
+  display: block;
+}
+
 .player[state="done"] {
-  background-image: url('assets/done.png');
+  //background-image: url('assets/done.png');
 }
