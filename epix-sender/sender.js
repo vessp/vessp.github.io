@@ -158,6 +158,35 @@ if (!chrome.cast || !chrome.cast.isAvailable) {
   setTimeout(initializeCastApi, CAST_API_INITIALIZATION_DELAY);
 }
 
+function onEpixFill()
+{
+	var xhr = new XMLHttpRequest();
+	var url = 'http://device.epixhd.com/epx/device/mobile/android/movie/the-avengers/playlist?device_guid=1234567890&format=js&ts=' + new Date().getTime();
+
+	var count = 0;
+	xhr.open('GET', url, true);
+	xhr.withCredentials = false;
+	xhr.onreadystatechange = function(e){
+		if(count++ == 2 && e.target.status == 200)
+		{
+			var json = JSON.parse(e.target.response);
+			var playlist = json.playlist.item;
+			for(var i=0; i<playlist.length; i++)
+			{
+				var item = playlist[i];
+				if(item.type == "movie")
+				{
+					var path = item.path;
+					document.getElementById("customMediaURL").value = path;
+					currentMediaURL = path;
+				}
+			}
+			//console.log(json);
+		}
+	};
+	xhr.send();
+}
+
 /**
  * Initialization
  */
