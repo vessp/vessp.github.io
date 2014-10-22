@@ -158,10 +158,10 @@ if (!chrome.cast || !chrome.cast.isAvailable) {
   setTimeout(initializeCastApi, CAST_API_INITIALIZATION_DELAY);
 }
 
-function onEpixFill()
+function onEpixFill(shortname)
 {
 	var xhr = new XMLHttpRequest();
-	var url = 'http://device.epixhd.com/epx/device/mobile/android/movie/the-avengers/playlist?device_guid=1234567890&format=js&ts=' + new Date().getTime();
+	var url = 'http://device.epixhd.com/epx/device/mobile/android/movie/' + shortname + '/playlist?device_guid=1234567890&format=js&ts=' + new Date().getTime();
 
 	var count = 0;
 	xhr.open('GET', url, true);
@@ -494,16 +494,23 @@ function loadMedia(mediaURL) {
     appendMessage('no session');
     return;
   }
-  if (mediaURL) {
-    var mediaInfo = new chrome.cast.media.MediaInfo(mediaURL);
+  if (mediaURL)
+  {
+    var contentType = 'video/mp4';
+	if(mediaURL.indexOf('.m3u8') != -1)
+	{
+		contentType = 'application/vnd.apple.mpegurl';
+	}
+  
+    var mediaInfo = new chrome.cast.media.MediaInfo(mediaURL, contentType);
   }
   else {
     console.log('loading...' + currentMediaURL);
     appendMessage('loading...' + currentMediaURL);
     var mediaInfo = new chrome.cast.media.MediaInfo(currentMediaURL);
+	mediaInfo.contentType = mediaTypes[currentMediaIndex];
   }
 
-  mediaInfo.contentType = mediaTypes[currentMediaIndex];
   var request = new chrome.cast.media.LoadRequest(mediaInfo);
   request.currentTime = initialTimeIndexSeconds;
   request.autoplay = true;
