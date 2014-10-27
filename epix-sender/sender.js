@@ -190,6 +190,7 @@ function onEpixFill(shortname)
 function onCustomFill(url)
 {
 	document.getElementById("customMediaURL").value = url;
+	loadCustomMedia();
 }
 
 /**
