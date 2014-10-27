@@ -187,6 +187,11 @@ function onEpixFill(shortname)
 	xhr.send();
 }
 
+function onCustomFill(url)
+{
+	document.getElementById("customMediaURL").value = url;
+}
+
 /**
  * Initialization
  */
