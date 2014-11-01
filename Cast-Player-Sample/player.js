@@ -51,7 +51,7 @@
  * Creates the namespace
  */
 var sampleplayer = sampleplayer || {};
-window.samplePlayer = samplePlayer;
+window.sampleplayer = sampleplayer;
 
 
 
