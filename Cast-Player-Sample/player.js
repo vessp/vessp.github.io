@@ -928,7 +928,7 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
   var mediaInfo = this.mediaManager_.getMediaInformation();
   if(activeTrackIds && mediaInfo)
   {
-	this.player_.enableCaptions(false);
+	this.player_.enableCaptions(false, 'ttml');
     for(var i=0; i<activeTrackIds.length; i++)
 	{
 		var activeTrackId = activeTrackIds[i];
