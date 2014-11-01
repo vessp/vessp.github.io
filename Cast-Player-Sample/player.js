@@ -555,6 +555,7 @@ sampleplayer.CastPlayer.prototype.loadVideo_ = function(info) {
 
     this.player_ = new cast.player.api.Player(host);
     this.player_.load(protocolFunc(host));
+	window.player_ = this.player_;
   }
 };
 
