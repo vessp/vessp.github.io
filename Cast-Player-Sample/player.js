@@ -232,6 +232,11 @@ sampleplayer.CastPlayer = function(element) {
 
   this.mediaManager_.customizedStatusCallback =
       this.customizedStatusCallback_.bind(this);
+	  
+	  
+	  
+  this.onEditTracksInfoOrig_ = this.mediaManager_.onEditTracksInfo.bind(this.mediaManager_);
+  this.mediaManager_.onEditTracksInfo = this.onEditTracksInfo_.bind(this);
 };
 
 
@@ -558,7 +563,7 @@ sampleplayer.CastPlayer.prototype.loadVideo_ = function(info) {
 	window.player_ = this.player_;
 	
 	
-	this.player_.enableCaptions(true, 'ttml', info.message.media.tracks[0].trackContentId);
+	//this.player_.enableCaptions(true, 'ttml', info.message.media.tracks[0].trackContentId);
   }
 };
 
@@ -915,6 +920,13 @@ sampleplayer.CastPlayer.prototype.onLoadMetadataError_ = function(event) {
         self.setState_(sampleplayer.State.IDLE, true);
         self.onLoadMetadataErrorOrig_(event);
       });
+};
+
+
+sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
+  this.log_('onEditTracksInfo_');
+  var self = this;
+  
 };
 
 
