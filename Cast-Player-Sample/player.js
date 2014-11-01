@@ -561,9 +561,6 @@ sampleplayer.CastPlayer.prototype.loadVideo_ = function(info) {
     this.player_ = new cast.player.api.Player(host);
     this.player_.load(protocolFunc(host));
 	window.player_ = this.player_;
-	
-	
-	//this.player_.enableCaptions(true, 'ttml', info.message.media.tracks[0].trackContentId);
   }
 };
 
@@ -927,6 +924,23 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
   this.log_('onEditTracksInfo_');
   var self = this;
   
+  var activeTrackIds = event.data.activeTrackIds;
+  var mediaInfo = this.mediaManager_.getMediaInformation();
+  if(activeTrackIds && mediaInfo)
+  {
+	this.player_.enableCaptions(false);
+    for(var i=0; i<activeTrackIds.length; i++)
+	{
+		var activeTrackId = activeTrackIds[i];
+		
+		for(var j=0; j<mediaInfo.tracks.length; j++)
+		{
+			var track = mediaInfo.tracks[j];
+			if(track.trackId == activeTrackId)
+				this.player_.enableCaptions(true, 'ttml', track.trackContentId);
+		}
+	}
+  }
 };
 
 
