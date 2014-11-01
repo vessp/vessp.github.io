@@ -51,6 +51,7 @@
  * Creates the namespace
  */
 var sampleplayer = sampleplayer || {};
+window.samplePlayer = samplePlayer;
 
 
 
@@ -993,11 +994,6 @@ sampleplayer.CastPlayer.prototype.onLoadSuccess_ = function() {
     this.progressBarInnerElement_.style.width = '100%';
     this.progressBarThumbElement_.style.left = '100%';
   }
-  
-  this.player_.enableCaptions(false);
-      this.player_.enableCaptions(true, 'ttml', 'captions.ttml');
-	   //this.player_.enableCaptions(false);
-	  //this.player_.enableCaptions(true, 'ttml', 'http://content.epixhd.com/assets/the-avengers/cc/the-avengers.xml');
 
   // if we were set to autoplay, delay playback by a short amount of time
   if (this.player_ && this.playerAutoPlay_) {
