@@ -941,6 +941,8 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
 		}
 	}
   }
+  
+  return true;
 };
 
 
