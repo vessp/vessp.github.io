@@ -54,6 +54,7 @@ var sampleplayer = sampleplayer || {};
 window.sampleplayer = sampleplayer;
 
 
+
 /**
  * <p>
  * Cast player constructor - This does the following:
@@ -187,8 +188,8 @@ sampleplayer.CastPlayer = function(element) {
       this.onSenderDisconnected_.bind(this);
   this.receiverManager_.onVisibilityChanged =
       this.onVisibilityChanged_.bind(this);
-  this.receiverManager_.setApplicationState("asdf");
-      //sampleplayer.getApplicationState_());
+  this.receiverManager_.setApplicationState(
+      sampleplayer.getApplicationState_());
 
 
   /**
@@ -643,7 +644,7 @@ sampleplayer.CastPlayer.prototype.updateApplicationState_ = function() {
     var applicationState = sampleplayer.getApplicationState_(media);
     if (this.applicationState_ != applicationState) {
       this.applicationState_ = applicationState;
-      this.receiverManager_.setApplicationState("asdf2");//applicationState);
+      this.receiverManager_.setApplicationState(applicationState);
     }
   }
 };
