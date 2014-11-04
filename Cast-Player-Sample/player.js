@@ -392,7 +392,7 @@ sampleplayer.CastPlayer.prototype.start = function() {
  * @export
  */
 sampleplayer.CastPlayer.prototype.load = function(info) {
-this.receiverManager_.getApplicationData().name = "MyEpix AppName";
+//this.receiverManager_.getApplicationData().name = "MyEpix AppName";
   this.log_('onLoad_');
   clearTimeout(this.idleTimerId_);
   var self = this;
