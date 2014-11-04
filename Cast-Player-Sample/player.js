@@ -381,7 +381,7 @@ sampleplayer.CastPlayer.prototype.start = function() {
 	//appConfig.maxInactivity = 6000; // 10 minutes for testing, use default 10sec in prod by not setting this value
 	//window.castReceiverManager.start(appConfig);
   this.receiverManager_.start(appConfig);
-  this.receiverManager_.getApplicationData().name = "MyEpix AppName";
+  
 };
 
 
@@ -392,6 +392,7 @@ sampleplayer.CastPlayer.prototype.start = function() {
  * @export
  */
 sampleplayer.CastPlayer.prototype.load = function(info) {
+this.receiverManager_.getApplicationData().name = "MyEpix AppName";
   this.log_('onLoad_');
   clearTimeout(this.idleTimerId_);
   var self = this;
