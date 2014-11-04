@@ -375,7 +375,11 @@ sampleplayer.CastPlayer.prototype.getMediaManager = function() {
  * @export
  */
 sampleplayer.CastPlayer.prototype.start = function() {
-  this.receiverManager_.start();
+	var appConfig = new cast.receiver.CastReceiverManager.Config();
+	appConfig.statusText = 'MyEpix Status Text';
+	//appConfig.maxInactivity = 6000; // 10 minutes for testing, use default 10sec in prod by not setting this value
+	//window.castReceiverManager.start(appConfig);
+  this.receiverManager_.start(appConfig);
 };
 
 
