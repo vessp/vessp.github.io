@@ -117,15 +117,6 @@ body {
   width: 80%;
 }
 
-.player .media-info .media-specs {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 21px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 80%;
-}
-
 .player .media-info .media-subtitle {
   color: rgba(203, 203, 203, 0.8);
   font-size: 22px;
@@ -372,7 +363,7 @@ body {
 .player[state="paused"]:not(.seeking) .controls-cur-time,
 .player[state="paused"]:not(.seeking) .controls-total-time,
 .player[state="paused"]:not(.seeking) .controls-progress {
-  opacity: 1;
+  opacity: 0;
   -webkit-transition: opacity 1s linear 5s;
 }
 
@@ -386,13 +377,11 @@ body {
   -webkit-transition: opacity 1s linear 5s;
 }
 
-/*
 .player[state="paused"] .watermark {
   opacity: 0;
   -webkit-transition: opacity 1s linear 5s;
 }
-*/
-//TODO fade out progress bar
+
 
 /* ------------------------------------------------- */
 /* Playing                                           */
