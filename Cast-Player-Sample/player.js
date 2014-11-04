@@ -191,7 +191,7 @@ sampleplayer.CastPlayer = function(element) {
   this.receiverManager_.setApplicationState("MyEpix state 1");
       //sampleplayer.getApplicationState_());
 
-	  this.receiverManager_.getApplicationData().name = "MyEpix AppName";
+	  
 
   /**
    * The remote media object.
@@ -381,6 +381,7 @@ sampleplayer.CastPlayer.prototype.start = function() {
 	//appConfig.maxInactivity = 6000; // 10 minutes for testing, use default 10sec in prod by not setting this value
 	//window.castReceiverManager.start(appConfig);
   this.receiverManager_.start(appConfig);
+  this.receiverManager_.getApplicationData().name = "MyEpix AppName";
 };
 
 
