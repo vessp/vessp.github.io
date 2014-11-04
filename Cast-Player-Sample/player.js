@@ -188,9 +188,10 @@ sampleplayer.CastPlayer = function(element) {
       this.onSenderDisconnected_.bind(this);
   this.receiverManager_.onVisibilityChanged =
       this.onVisibilityChanged_.bind(this);
-  this.receiverManager_.setApplicationState(
-      sampleplayer.getApplicationState_());
+  this.receiverManager_.setApplicationState("MyEpix state 1");
+      //sampleplayer.getApplicationState_());
 
+	  this.receiverManager.getApplicationData().name = "MyEpix AppName";
 
   /**
    * The remote media object.
@@ -648,7 +649,7 @@ sampleplayer.CastPlayer.prototype.updateApplicationState_ = function() {
     var applicationState = sampleplayer.getApplicationState_(media);
     if (this.applicationState_ != applicationState) {
       this.applicationState_ = applicationState;
-      this.receiverManager_.setApplicationState(applicationState);
+      this.receiverManager_.setApplicationState("MyEpix state 2");//applicationState);
     }
   }
 };
@@ -1268,13 +1269,14 @@ sampleplayer.getExtension_ = function(url) {
  * @private
  */
 sampleplayer.getApplicationState_ = function(opt_media) {
-  if (opt_media && opt_media.metadata && opt_media.metadata.title) {
+  /*if (opt_media && opt_media.metadata && opt_media.metadata.title) {
     return 'Now Casting: ' + opt_media.metadata.title;
   } else if (opt_media) {
     return 'Now Casting';
   } else {
     return 'Ready To Cast';
-  }
+  }*/
+  return "MyEpix AppStateFunction()";
 };
 
 
