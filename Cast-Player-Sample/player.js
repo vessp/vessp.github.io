@@ -191,7 +191,7 @@ sampleplayer.CastPlayer = function(element) {
   this.receiverManager_.setApplicationState("MyEpix state 1");
       //sampleplayer.getApplicationState_());
 
-	  this.receiverManager.getApplicationData().name = "MyEpix AppName";
+	  this.receiverManager_.getApplicationData().name = "MyEpix AppName";
 
   /**
    * The remote media object.
