@@ -132,7 +132,7 @@ body {
 }
 
 .player .controls {
-  display: none;
+  //display: none;
   bottom: 0;
   height: 30px;
   left: 0;
@@ -348,7 +348,6 @@ body {
 .player[state="paused"]:not(.seeking) .controls-total-time,
 .player[state="paused"]:not(.seeking) .controls-progress {
   display: block;
-  visibility: visible;
 }
 
 .player[state="paused"][live="true"] .controls-cur-time,
