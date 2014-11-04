@@ -408,7 +408,7 @@ body {
   display: block;
 }
 
-.player[state="playing"] .controls-play-pause {
+.player[state="playing"].seeking .controls-play-pause {
   background-image: url("assets/buffering.png");
   -webkit-animation: spin 1s infinite linear;
 }
