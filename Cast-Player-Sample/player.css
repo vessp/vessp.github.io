@@ -359,13 +359,13 @@ body {
 .player[state="paused"] video {
   display: block;
 }
-
+/*
 .player[state="paused"]:not(.seeking) .controls-cur-time,
 .player[state="paused"]:not(.seeking) .controls-total-time,
 .player[state="paused"]:not(.seeking) .controls-progress {
   opacity: 1;
   -webkit-transition: opacity 1s linear 5s;
-}
+}*/
 
 .player[state="paused"] .controls-cur-time,
 .player[state="paused"] .controls-total-time,
