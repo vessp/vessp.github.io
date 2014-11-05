@@ -197,6 +197,7 @@ sampleplayer.CastPlayer = function(element) {
    * @private {cast.receiver.MediaManager}
    */
   this.mediaManager_ = new cast.receiver.MediaManager(this.mediaElement_);
+  window.mediaManager_ = this.mediaManager_;
 
   /**
    * The original load callback.
