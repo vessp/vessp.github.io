@@ -286,10 +286,26 @@ body {
 /* Buffering                                         */
 /* ------------------------------------------------- */
 
-.player[state="buffering"] .overlay,
-.player[state="buffering"] .gradient {
+.player[state="buffering"].seeking .overlay,
+.player[state="buffering"].seeking .gradient {
   display: block;
   visibility: visible;
+}
+
+.player[state="buffering"]:not(.seeking) .overlay,
+.player[state="buffering"]:not(.seeking) .gradient {
+  display: block;
+  visibility: visible;
+  -webkit-animation-name: fadein;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-delay: 5s;
+  opacity: 0;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 .player[state="buffering"] .gradient {
