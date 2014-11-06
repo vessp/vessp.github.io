@@ -934,7 +934,7 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
   var self = this;
   this.onEditTracksInfoOrig_(event);
   
-  /*
+  
   var activeTrackIds = event.data.activeTrackIds;
   var mediaInfo = this.mediaManager_.getMediaInformation();
   
@@ -958,8 +958,8 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
 	}
   }
   
-  this.messageBus_.broadcast(JSON.stringify({'type':'activeTrackIds', 'data':vertifiedActiveTrackIds}));
-  */
+  //this.messageBus_.broadcast(JSON.stringify({'type':'activeTrackIds', 'data':vertifiedActiveTrackIds}));
+  
 };
 
 
