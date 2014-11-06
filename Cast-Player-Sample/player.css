@@ -286,14 +286,8 @@ body {
 /* Buffering                                         */
 /* ------------------------------------------------- */
 
-.player[state="buffering"].seeking .overlay,
-.player[state="buffering"].seeking .gradient {
-  display: block;
-  visibility: visible;
-}
-
-.player[state="buffering"]:not(.seeking) .overlay,
-.player[state="buffering"]:not(.seeking) .gradient {
+.player[state="buffering"] .overlay,
+.player[state="buffering"] .gradient {
   display: block;
   visibility: visible;
   -webkit-animation-name: fadein;
@@ -319,6 +313,8 @@ body {
 .player[state="buffering"] .controls-play-pause {
   background-image: url("assets/buffering.png");
   -webkit-animation: spin 1s infinite linear;
+  //opacity: 0;
+  //-webkit-transition: opacity 1s linear 5s;
 }
 
 @-webkit-keyframes fadein {
