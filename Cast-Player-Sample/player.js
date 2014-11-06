@@ -935,7 +935,7 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
   var activeTrackIds = event.data.activeTrackIds;
   var mediaInfo = this.mediaManager_.getMediaInformation();
   
-  var numActiveTracks = 0;
+  var vertifiedActiveTrackIds = [];
   if(activeTrackIds && mediaInfo)
   {
 	this.player_.enableCaptions(false, 'ttml');
@@ -948,14 +948,14 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
 			var track = mediaInfo.tracks[j];
 			if(track.trackId == activeTrackId)
 			{
-				numActiveTracks++;
+				vertifiedActiveTrackIds.push(activeTrackId);
 				this.player_.enableCaptions(true, 'ttml', track.trackContentId);
 			}
 		}
 	}
   }
   
-  this.messageBus_.broadcast(JSON.stringify({'type':'numActiveTracks', 'data':numActiveTracks}));
+  this.messageBus_.broadcast(JSON.stringify({'type':'activeTrackIds', 'data':vertifiedActiveTrackIds}));
 };
 
 
