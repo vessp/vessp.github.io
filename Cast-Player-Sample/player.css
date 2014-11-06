@@ -290,7 +290,7 @@ body {
 .player[state="buffering"] .gradient {
   display: block;
   visibility: visible;
-  -webkit-animation: fadein 2s;
+  -webkit-animation: fadein 2s 5s;
 }
 
 .player[state="buffering"] .gradient {
