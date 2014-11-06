@@ -930,6 +930,7 @@ sampleplayer.CastPlayer.prototype.onLoadMetadataError_ = function(event) {
 
 sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
   this.log_('onEditTracksInfo_');
+  console.log("onEditTracksInfo_" + event);
   var self = this;
   this.onEditTracksInfoOrig_(event);
   
