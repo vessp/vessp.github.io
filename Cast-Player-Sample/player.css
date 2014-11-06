@@ -322,7 +322,7 @@ body {
   display: block;
 }
 
-.player[state="buffering"] .media-info,
+//.player[state="buffering"] .media-info,
 .player[state="buffering"]:not(.seeking) .controls-cur-time,
 .player[state="buffering"]:not(.seeking) .controls-total-time,
 .player[state="buffering"]:not(.seeking) .controls-progress {
