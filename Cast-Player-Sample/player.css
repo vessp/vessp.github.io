@@ -292,11 +292,20 @@ body {
   visibility: visible;
 }
 
-.player[state="buffering"]:not(.seeking) .overlay,
-.player[state="buffering"]:not(.seeking) .gradient {
+.player[state="buffering"]:not(.seeking) .overlay {
   display: block;
   visibility: visible;
   -webkit-animation-name: fadein;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-delay: 5s;
+  opacity: 0;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.player[state="buffering"]:not(.seeking) .gradient {
+  display: block;
+  visibility: visible;
+  -webkit-animation-name: fadeinGradient;
   -webkit-animation-duration: 2s;
   -webkit-animation-delay: 5s;
   opacity: 0;
@@ -308,7 +317,12 @@ body {
     to   { opacity: 1; }
 }
 
-.player[state="buffering"] .gradient {
+@-webkit-keyframes fadeinGradient {
+    from { opacity: 0; }
+    to   { opacity: 0.1; }
+}
+
+.player[state="buffering"].seeking .gradient {
   opacity: 0.1;
 }
 
