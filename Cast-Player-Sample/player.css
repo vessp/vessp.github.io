@@ -148,7 +148,6 @@ body {
   margin-left: -4px;
   margin-top: -3px;
   width: 32px;
-  opacity: 0;
 }
 
 .player .overlay {
@@ -309,7 +308,7 @@ body {
 .player[state="buffering"] .controls-play-pause {
   background-image: url("assets/buffering.png");
   -webkit-animation: spin 1s infinite linear;
-  opacity: 1;
+  opacity: 0;
   -webkit-transition: opacity 1s linear 5s;
 }
 
@@ -343,7 +342,6 @@ body {
 
 .player[state="paused"] .controls-play-pause {
   background-image: url("assets/paused.png");
-  opacity: 1;
 }
 
 .player[state="paused"] .controls,
@@ -415,7 +413,6 @@ body {
 .player[state="playing"].seeking .controls-play-pause {
   background-image: url("assets/buffering.png");
   -webkit-animation: spin 1s infinite linear;
-  opacity: 1;
 }
 
 .player[state="playing"]:not(.seeking) .controls-play-pause {
