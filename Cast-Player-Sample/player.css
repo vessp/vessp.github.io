@@ -298,7 +298,9 @@ body {
 
 .player[state="buffering"] .media-artwork,
 .player[state="buffering"] .media-info {
-  display: none;
+  display: block;
+  opacity: 100;
+  -webkit-transition: opacity 1s linear 5s;
 }
 
 .player[state="buffering"] .controls {
