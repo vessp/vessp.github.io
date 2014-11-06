@@ -958,7 +958,7 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
 	}
   }
   
-  this.receiverManager_.getCastMessageBus(EPIX_MESSAGE_NAMESPACE).broadcast(numActiveTracks);
+  this.receiverManager_.getCastMessageBus(EPIX_MESSAGE_NAMESPACE).broadcast({'data':numActiveTracks});
 };
 
 
