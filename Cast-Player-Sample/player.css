@@ -308,6 +308,17 @@ body {
   -webkit-animation-fill-mode: forwards;
 }
 
+.player[state="buffering"]:not(.seeking) .overlay,
+.player[state="buffering"]:not(.seeking) .gradient {
+  display: block;
+  visibility: visible;
+  -webkit-animation-name: fadein;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-delay: 5s;
+  opacity: 0;
+  -webkit-animation-fill-mode: forwards;
+}
+
 .player[state="buffering"] .gradient {
   opacity: 0.1;
 }
