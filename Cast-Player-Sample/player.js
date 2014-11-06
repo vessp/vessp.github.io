@@ -47,6 +47,9 @@
 'use strict';
 
 
+var EPIX_MESSAGE_NAMESPACE = 'urn:x-cast:com.epix.epix';
+
+
 /**
  * Creates the namespace
  */
@@ -74,6 +77,8 @@ window.sampleplayer = sampleplayer;
  * @export
  */
 sampleplayer.CastPlayer = function(element) {
+
+  window.CastPlayerInstance = this;
 
   /**
    * The debug setting to control receiver, MPL and player logging.
@@ -191,6 +196,14 @@ sampleplayer.CastPlayer = function(element) {
   this.receiverManager_.setApplicationState(
       sampleplayer.getApplicationState_());
 
+	  
+	window.messageBus = this.receiverManager_.getCastMessageBus(EPIX_MESSAGE_NAMESPACE);
+           
+	window.messageBus.onMessage = function(event) {
+		console.log(event['data']);
+		
+	};
+	  
 
   /**
    * The remote media object.
@@ -924,6 +937,8 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
   
   var activeTrackIds = event.data.activeTrackIds;
   var mediaInfo = this.mediaManager_.getMediaInformation();
+  
+  var numActiveTracks = 0;
   if(activeTrackIds && mediaInfo)
   {
 	this.player_.enableCaptions(false, 'ttml');
@@ -935,10 +950,15 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
 		{
 			var track = mediaInfo.tracks[j];
 			if(track.trackId == activeTrackId)
+			{
+				numActiveTracks++;
 				this.player_.enableCaptions(true, 'ttml', track.trackContentId);
+			}
 		}
 	}
   }
+  
+  this.receiverManager_.getCastMessageBus(EPIX_MESSAGE_NAMESPACE).broadcast(numActiveTracks);
 };
 
 
