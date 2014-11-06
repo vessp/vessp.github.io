@@ -54,7 +54,6 @@ var EPIX_MESSAGE_NAMESPACE = 'urn:x-cast:com.epix.epix';
  * Creates the namespace
  */
 var sampleplayer = sampleplayer || {};
-window.sampleplayer = sampleplayer;
 
 
 
@@ -197,10 +196,10 @@ sampleplayer.CastPlayer = function(element) {
       sampleplayer.getApplicationState_());
 
 	  
-	window.messageBus = this.receiverManager_.getCastMessageBus(EPIX_MESSAGE_NAMESPACE);
+	this.messageBus_ = this.receiverManager_.getCastMessageBus(EPIX_MESSAGE_NAMESPACE);
            
-	window.messageBus.onMessage = function(event) {
-		console.log(event['data']);
+	this.messageBus_.onMessage = function(event) {
+		console.log(event);
 		
 	};
 	  
@@ -210,7 +209,6 @@ sampleplayer.CastPlayer = function(element) {
    * @private {cast.receiver.MediaManager}
    */
   this.mediaManager_ = new cast.receiver.MediaManager(this.mediaElement_);
-  window.mediaManager_ = this.mediaManager_;
 
   /**
    * The original load callback.
@@ -571,7 +569,6 @@ sampleplayer.CastPlayer.prototype.loadVideo_ = function(info) {
 
     this.player_ = new cast.player.api.Player(host);
     this.player_.load(protocolFunc(host));
-	window.player_ = this.player_;
   }
 };
 
@@ -958,7 +955,7 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
 	}
   }
   
-  this.receiverManager_.getCastMessageBus(EPIX_MESSAGE_NAMESPACE).broadcast({'data':numActiveTracks});
+  this.messageBus.broadcast({'data':numActiveTracks});
 };
 
 
