@@ -955,7 +955,7 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
 	}
   }
   
-  this.messageBus_.broadcast({'data':numActiveTracks});
+  this.messageBus_.broadcast(JSON.stringify({'type':'numActiveTracks', 'data':numActiveTracks}));
 };
 
 
