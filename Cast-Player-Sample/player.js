@@ -47,7 +47,7 @@
 'use strict';
 
 
-//var EPIX_MESSAGE_NAMESPACE = 'urn:x-cast:com.epix.epix';
+var EPIX_MESSAGE_NAMESPACE = 'urn:x-cast:com.epix.epix';
 
 
 /**
@@ -196,12 +196,12 @@ sampleplayer.CastPlayer = function(element) {
       sampleplayer.getApplicationState_());
 
 	  
-	//this.messageBus_ = this.receiverManager_.getCastMessageBus(EPIX_MESSAGE_NAMESPACE);
-    //       
-	//this.messageBus_.onMessage = function(event) {
-	//	console.log(event);
-	//	
-	//};
+	this.messageBus_ = this.receiverManager_.getCastMessageBus(EPIX_MESSAGE_NAMESPACE);
+           
+	this.messageBus_.onMessage = function(event) {
+		console.log(event);
+		
+	};
 	  
 
   /**
@@ -957,10 +957,9 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
 	}
   }
   
-  this.onEditTracksInfoOrig_(event);
+  this.onEditTracksInfoOrig_(event); // Super Call
   
-  //this.messageBus_.broadcast(JSON.stringify({'type':'activeTrackIds', 'data':vertifiedActiveTrackIds}));
-  
+  this.messageBus_.broadcast(JSON.stringify({'type':'activeTrackIds', 'data':vertifiedActiveTrackIds}));
 };
 
 
