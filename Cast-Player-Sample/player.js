@@ -937,7 +937,7 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
   var activeTrackIds = event.data.activeTrackIds;
   var mediaInfo = this.mediaManager_.getMediaInformation();
   
-  var vertifiedActiveTrackIds = [];
+  var verifiedActiveTrackIds = [];
   if(activeTrackIds && mediaInfo)
   {
 	this.player_.enableCaptions(false, 'ttml');
@@ -950,7 +950,7 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
 			var track = mediaInfo.tracks[j];
 			if(track.trackId == activeTrackId)
 			{
-				vertifiedActiveTrackIds.push(activeTrackId);
+				verifiedActiveTrackIds.push(activeTrackId);
 				this.player_.enableCaptions(true, 'ttml', track.trackContentId);
 			}
 		}
@@ -959,7 +959,7 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
   
   this.onEditTracksInfoOrig_(event); // Super Call
   
-  this.messageBus_.broadcast(JSON.stringify({'type':'activeTrackIds', 'data':vertifiedActiveTrackIds}));
+  this.messageBus_.broadcast(JSON.stringify({'type':'activeTrackIds', 'data':verifiedActiveTrackIds}));
 };
 
 
