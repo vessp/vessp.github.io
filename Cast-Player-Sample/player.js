@@ -932,7 +932,6 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
   this.log_('onEditTracksInfo_');
   console.log("onEditTracksInfo_" + JSON.stringify(event));
   var self = this;
-  this.onEditTracksInfoOrig_(event);
   
   
   var activeTrackIds = event.data.activeTrackIds;
@@ -957,6 +956,8 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
 		}
 	}
   }
+  
+  this.onEditTracksInfoOrig_(event);
   
   //this.messageBus_.broadcast(JSON.stringify({'type':'activeTrackIds', 'data':vertifiedActiveTrackIds}));
   
