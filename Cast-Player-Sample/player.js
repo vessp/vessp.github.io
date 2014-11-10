@@ -898,9 +898,9 @@ sampleplayer.CastPlayer.prototype.onSeekEnd_ = function() {
   clearTimeout(this.seekingTimeoutId_);
   //this.seekingTimeoutId_ = sampleplayer.addClassWithTimeout_(this.element_, 'seeking', 3000);
 	  
-  element.classList.add('seeking');
+  self.element_.classList.add('seeking');
   this.seekingTimeoutId_ = setTimeout(function() {
-    element.classList.remove('seeking');
+    self.element_.classList.remove('seeking');
 	
 	if(removeRecentlyLoadedOnFinishedSeek == true)
 	{
