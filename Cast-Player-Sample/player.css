@@ -424,6 +424,17 @@ body {
   visibility: hidden;
 }
 
+.player[state="playing"][recentlyLoaded="true"] .overlay,
+.player[state="playing"][recentlyLoaded="true"] .gradient,
+.player[state="playing"][recentlyLoaded="true"] .watermark {
+  display: block;
+  visibility: visible;
+}
+
+.player[state="playing"][recentlyLoaded="true"] .media-info {
+  display: block;
+}
+
 .player[state="playing"].seeking .overlay,
 .player[state="playing"].seeking .gradient {
   display: block;
