@@ -614,41 +614,45 @@ sampleplayer.CastPlayer.prototype.setType_ = function(type, isLiveStream) {
  * @param {number=} opt_delay the amount of time (in ms) to wait
  * @private
  */
-sampleplayer.CastPlayer.prototype.setState_ = function(
-    state, opt_crossfade, opt_delay) {
-  this.log_('setState_: state=' + state + ', crossfade=' + opt_crossfade +
-      ', delay=' + opt_delay);
+sampleplayer.CastPlayer.prototype.setState_ = function(state, opt_crossfade, opt_delay) {
+  this.log_('setState_: state=' + state + ', crossfade=' + opt_crossfade + ', delay=' + opt_delay);
   var self = this;
   clearTimeout(self.delay_);
-  if (opt_delay) {
+  if (opt_delay)
+  {
     var func = function() { self.setState_(state, opt_crossfade); };
     self.delay_ = setTimeout(func, opt_delay);
-  } else {
-    if (!opt_crossfade) {
+  }
+  else
+  {
+    if (!opt_crossfade)
+	{
       self.state_ = state;
       self.element_.setAttribute('state', state);
       self.updateApplicationState_();
       self.setIdleTimeout_(sampleplayer.IDLE_TIMEOUT[state.toUpperCase()]);
-    } else {
+	  
+	  //davidr
+	  if(state == sampleplayer.State.LOADING)
+	  {
+		self.element_.setAttribute('recentlyLoaded', 'true');
+		needToRemoveRecentlyLoaded = true;
+	  }
+	  else if(state == sampleplayer.State.PLAYING && self.element_.hasAttribute('recentlyLoaded') && needToRemoveRecentlyLoaded)
+	  {
+		needToRemoveRecentlyLoaded = false;
+		setTimeout(function(){
+			self.element_.removeAttribute('recentlyLoaded');
+		}, 5000);
+	  }
+    }
+	else
+	{
       sampleplayer.transition_(self.element_, sampleplayer.TRANSITION_DURATION_,
           function() {
             self.setState_(state, false);
           });
     }
-  }
-  
-  //davidr
-  if(state == sampleplayer.State.LOADING)
-  {
-	self.element_.setAttribute('recentlyLoaded', 'true');
-	needToRemoveRecentlyLoaded = true;
-  }
-  else if(state == sampleplayer.State.PLAYING && self.element_.hasAttribute('recentlyLoaded') && needToRemoveRecentlyLoaded)
-  {
-    needToRemoveRecentlyLoaded = false;
-    setTimeout(function(){
-		self.element_.removeAttribute('recentlyLoaded');
-	}, 5000);
   }
 };
 
