@@ -636,8 +636,23 @@ sampleplayer.CastPlayer.prototype.setState_ = function(
           });
     }
   }
+  
+  //davidr
+  if(state == sampleplayer.State.LOADING)
+  {
+	self.element_.setAttribute('recentlyLoaded', 'true');
+	needToRemoveRecentlyLoaded = true;
+  }
+  else if(state == sampleplayer.State.PLAYING && self.element_.hasAttribute('recentlyLoaded') && needToRemoveRecentlyLoaded)
+  {
+    needToRemoveRecentlyLoaded = false;
+    setTimeout(function(){
+		self.element_.removeAttribute('recentlyLoaded');
+	}, 5000);
+  }
 };
 
+var needToRemoveRecentlyLoaded = false;
 
 /**
  * Updates the application state if it has changed.
