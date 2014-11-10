@@ -444,8 +444,8 @@ body {
   opacity: 0.1;
 }
 
-.player[state="playing"][recentlyLoaded="true"].seeking .media-info {
-  display: flex;
+.player[state="playing"][recentlyLoaded="true"] .media-info {
+  display: flex !important;
 }
 
 .player[state="playing"].seeking .media-info {
