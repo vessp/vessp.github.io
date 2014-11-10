@@ -893,9 +893,21 @@ sampleplayer.CastPlayer.prototype.onSeekStart_ = function() {
  */
 sampleplayer.CastPlayer.prototype.onSeekEnd_ = function() {
   this.log_('onSeekEnd');
+  var self = this;
+  
   clearTimeout(this.seekingTimeoutId_);
-  this.seekingTimeoutId_ = sampleplayer.addClassWithTimeout_(this.element_,
-      'seeking', 3000);
+  //this.seekingTimeoutId_ = sampleplayer.addClassWithTimeout_(this.element_, 'seeking', 3000);
+	  
+  element.classList.add('seeking');
+  this.seekingTimeoutId_ = setTimeout(function() {
+    element.classList.remove('seeking');
+	
+	if(removeRecentlyLoadedOnFinishedSeek == true)
+	{
+		removeRecentlyLoadedOnFinishedSeek = false;
+		self.element_.removeAttribute('recentlyLoaded');
+	}
+  }, 3000);
 };
 
 
@@ -1176,13 +1188,6 @@ sampleplayer.addClassWithTimeout_ = function(element, className, timeout) {
   element.classList.add(className);
   return setTimeout(function() {
     element.classList.remove(className);
-	
-	if(className == 'seeking' && removeRecentlyLoadedOnFinishedSeek == true)
-	{
-		removeRecentlyLoadedOnFinishedSeek = false;
-		self.element_.removeAttribute('recentlyLoaded');
-	}
-  }, timeout);
 };
 
 
