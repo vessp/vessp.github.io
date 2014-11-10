@@ -423,7 +423,7 @@ body {
   display: block;
   //visibility: hidden;
   opacity: 0;
-  -webkit-transition: opacity 1s linear 5s;
+  //-webkit-transition: opacity 1s linear 5s;
 }
 
 .player[state="playing"][recentlyLoaded="true"] .overlay,
@@ -440,7 +440,11 @@ body {
   opacity: 1;
 }
 
-.player[state="playing"].seeking:not([recentlyLoaded="true"]) .media-info {
+.player[state="playing"][recentlyLoaded="true"].seeking .media-info {
+  display: flex;
+}
+
+.player[state="playing"].seeking .media-info {
   display: none;
 }
 
