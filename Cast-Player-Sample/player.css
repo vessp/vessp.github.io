@@ -423,6 +423,7 @@ body {
   display: block;
   //visibility: hidden;
   opacity: 0;
+  -webkit-transition: opacity 1s linear 5s;
 }
 
 .player[state="playing"][recentlyLoaded="true"] .overlay,
