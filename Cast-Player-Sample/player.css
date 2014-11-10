@@ -421,14 +421,16 @@ body {
 .player[state="playing"] .gradient,
 .player[state="playing"] .watermark {
   display: block;
-  visibility: hidden;
+  //visibility: hidden;
+  opacity: 0;
 }
 
 .player[state="playing"][recentlyLoaded="true"] .overlay,
 .player[state="playing"][recentlyLoaded="true"] .gradient,
 .player[state="playing"][recentlyLoaded="true"] .watermark {
   display: block;
-  visibility: visible;
+  //visibility: visible;
+  opacity: 1;
 }
 
 .player[state="playing"][recentlyLoaded="true"] .media-info {
@@ -438,7 +440,8 @@ body {
 .player[state="playing"].seeking .overlay,
 .player[state="playing"].seeking .gradient {
   display: block;
-  visibility: visible;
+  //visibility: visible;
+  opacity: 1;
 }
 
 .player[state="playing"].seeking .media-info {
