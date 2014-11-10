@@ -635,14 +635,14 @@ sampleplayer.CastPlayer.prototype.setState_ = function(state, opt_crossfade, opt
 	  //davidr
 	  if(state == sampleplayer.State.LOADING)
 	  {
-		//self.element_.setAttribute('recentlyLoaded', 'true');
+		self.element_.setAttribute('recentlyLoaded', 'true');
 		needToRemoveRecentlyLoaded = true;
 	  }
 	  else if(state == sampleplayer.State.PLAYING && self.element_.hasAttribute('recentlyLoaded') && needToRemoveRecentlyLoaded)
 	  {
 		needToRemoveRecentlyLoaded = false;
 		setTimeout(function(){
-			//self.element_.removeAttribute('recentlyLoaded');
+			self.element_.removeAttribute('recentlyLoaded');
 		}, 5000);
 	  }
     }
