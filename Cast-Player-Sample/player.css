@@ -421,13 +421,16 @@ body {
 .player[state="playing"] .gradient,
 .player[state="playing"] .watermark {
   display: block;
-  visibility: hidden;
+  //visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 1s linear 5s;
 }
 
 .player[state="playing"].seeking .overlay,
 .player[state="playing"].seeking .gradient {
   display: block;
   visibility: visible;
+  opacity: 1;
 }
 
 .player[state="playing"].seeking .media-info {
