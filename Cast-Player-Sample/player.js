@@ -642,15 +642,14 @@ sampleplayer.CastPlayer.prototype.setState_ = function(state, opt_crossfade, opt
 	  else if(state == sampleplayer.State.PLAYING && self.element_.hasAttribute('recentlyLoaded') && needToRemoveRecentlyLoaded)
 	  {
 		needToRemoveRecentlyLoaded = false;
-		setTimeout(removeRecentlyLoadedFunc, 5000);
-		function removeRecentlyLoadedFunc()
-		{
-			if(self.element_.classList.indexOf('seeking') != -1)
-				removeRecentlyLoadedOnFinishedSeek = true;
-			else
-				self.element_.removeAttribute('recentlyLoaded');
-			
-		}
+		setTimeout(function()
+			{
+				if(self.element_.classList.indexOf('seeking') != -1)
+					removeRecentlyLoadedOnFinishedSeek = true;
+				else
+					self.element_.removeAttribute('recentlyLoaded');
+				
+			}, 5000);
 	  }
     }
 	else
@@ -897,16 +896,6 @@ sampleplayer.CastPlayer.prototype.onSeekEnd_ = function() {
   clearTimeout(this.seekingTimeoutId_);
   this.seekingTimeoutId_ = sampleplayer.addClassWithTimeout_(this.element_,
       'seeking', 3000);
-	
-	if(removeRecentlyLoadedOnFinishedSeek == true)
-	{
-		removeRecentlyLoadedOnFinishedSeek = false;
-		setTimeout(removeRecentlyLoadedFunc, 3000);
-		function removeRecentlyLoadedFunc()
-		{
-			self.element_.removeAttribute('recentlyLoaded');
-		}
-	}
 };
 
 
@@ -1187,6 +1176,12 @@ sampleplayer.addClassWithTimeout_ = function(element, className, timeout) {
   element.classList.add(className);
   return setTimeout(function() {
     element.classList.remove(className);
+	
+	if(className == 'seeking' && removeRecentlyLoadedOnFinishedSeek == true)
+	{
+		removeRecentlyLoadedOnFinishedSeek = false;
+		self.element_.removeAttribute('recentlyLoaded');
+	}
   }, timeout);
 };
 
