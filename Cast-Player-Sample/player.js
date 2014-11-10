@@ -905,7 +905,9 @@ sampleplayer.CastPlayer.prototype.onSeekEnd_ = function() {
 	if(removeRecentlyLoadedOnFinishedSeek == true)
 	{
 		removeRecentlyLoadedOnFinishedSeek = false;
-		self.element_.removeAttribute('recentlyLoaded');
+		setTimeout(function(){
+			self.element_.removeAttribute('recentlyLoaded');
+		}, 2000);
 	}
   }, 3000);
 };

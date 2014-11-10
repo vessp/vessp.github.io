@@ -433,11 +433,15 @@ body {
   opacity: 1;
 }
 
-.player[state="playing"].seeking .overlay,
-.player[state="playing"].seeking .gradient {
+.player[state="playing"].seeking .overlay {
   display: block;
   //visibility: visible;
   opacity: 1;
+}
+.player[state="playing"].seeking .gradient {
+  display: block;
+  //visibility: visible;
+  opacity: 0.1;
 }
 
 .player[state="playing"][recentlyLoaded="true"].seeking .media-info {
