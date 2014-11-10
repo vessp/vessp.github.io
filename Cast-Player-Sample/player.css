@@ -433,10 +433,6 @@ body {
   opacity: 1;
 }
 
-//.player[state="playing"][recentlyLoaded="true"] .media-info {
- // display: block !important;
-//}
-
 .player[state="playing"].seeking .overlay,
 .player[state="playing"].seeking .gradient {
   display: block;
@@ -444,7 +440,7 @@ body {
   opacity: 1;
 }
 
-.player[state="playing"].seeking:not([recentlyLoaded="true"]) .media-info {
+.player[state="playing"]:not([recentlyLoaded="true"]) .media-info {
   display: none;
 }
 

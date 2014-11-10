@@ -643,7 +643,7 @@ sampleplayer.CastPlayer.prototype.setState_ = function(state, opt_crossfade, opt
 		needToRemoveRecentlyLoaded = false;
 		setTimeout(function(){
 			self.element_.removeAttribute('recentlyLoaded');
-		}, 10000);
+		}, 5000);
 	  }
     }
 	else
