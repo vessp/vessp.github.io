@@ -636,7 +636,22 @@ sampleplayer.CastPlayer.prototype.setState_ = function(
           });
     }
   }
+  
+  //davidr
+  if(state == sampleplayer.State.LOADING)
+  {
+	loadingFlag = true;
+	self.element_.setAttribute('recentlyLoaded', 'true');
+  }
+  else if(state == sampleplayer.State.PLAYING && self.element_.hasAttribute('recentlyLoaded'))
+  {
+    setTimeout(function(){
+		self.element_.removeAttribute('recentlyLoaded');
+	}, 5000);
+  }
 };
+
+var loadingFlag = false;
 
 
 /**
