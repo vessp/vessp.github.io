@@ -1188,6 +1188,7 @@ sampleplayer.addClassWithTimeout_ = function(element, className, timeout) {
   element.classList.add(className);
   return setTimeout(function() {
     element.classList.remove(className);
+  }, timeout);
 };
 
 
