@@ -633,7 +633,7 @@ sampleplayer.CastPlayer.prototype.setState_ = function(state, opt_crossfade, opt
       self.setIdleTimeout_(sampleplayer.IDLE_TIMEOUT[state.toUpperCase()]);
 	  
 	  //davidr
-	  if(state == sampleplayer.State.LOADING)
+	  /*if(state == sampleplayer.State.LOADING)
 	  {
 		//self.element_.setAttribute('recentlyLoaded', 'true');
 		needToRemoveRecentlyLoaded = true;
@@ -644,7 +644,7 @@ sampleplayer.CastPlayer.prototype.setState_ = function(state, opt_crossfade, opt
 		setTimeout(function(){
 			//self.element_.removeAttribute('recentlyLoaded');
 		}, 5000);
-	  }
+	  }*/
     }
 	else
 	{
