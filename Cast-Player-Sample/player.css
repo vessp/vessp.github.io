@@ -429,12 +429,11 @@ body {
 .player[state="playing"][recentlyLoaded="true"] .gradient,
 .player[state="playing"][recentlyLoaded="true"] .watermark {
   display: block;
-  //visibility: visible;
   opacity: 1;
 }
 
 .player[state="playing"][recentlyLoaded="true"] .media-info {
-  display: block;
+  display: block !important;
 }
 
 .player[state="playing"].seeking .overlay,
