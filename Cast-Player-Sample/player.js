@@ -1006,6 +1006,7 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
 	for(var i=0; i<mediaInfo.tracks.length; i++)
 	{
 		var track = mediaInfo.tracks[i];
+		this.player_.enableCaptions(false, 'ttml');
 		this.player_.enableCaptions(true, 'ttml', track.trackContentId);
 	}
   }
