@@ -1001,12 +1001,12 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
   this.messageBus_.broadcast(JSON.stringify({'type':'activeTrackIds', 'data':verifiedActiveTrackIds}));
   */
   
-  if(mediaInfo && mediaInfo.tracks)
+  if(mediaInfo && mediaInfo.tracks && $('video')['textTracks'].length != mediaInfo.tracks.length)
   {
 	for(var i=0; i<mediaInfo.tracks.length; i++)
 	{
 		var track = mediaInfo.tracks[i];
-		this.player_.enableCaptions(false, 'ttml');
+		//this.player_.enableCaptions(false, 'ttml');
 		this.player_.enableCaptions(true, 'ttml', track.trackContentId);
 	}
   }
