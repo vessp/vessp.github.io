@@ -1001,7 +1001,7 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
   this.messageBus_.broadcast(JSON.stringify({'type':'activeTrackIds', 'data':verifiedActiveTrackIds}));
   */
   
-  if(mediaInfo && mediaInfo.tracks && $('video')['textTracks'].length != mediaInfo.tracks.length)
+  if(mediaInfo && mediaInfo.tracks && document.getElementsByTagName('video')[0]['textTracks'].length != mediaInfo.tracks.length)
   {
 	for(var i=0; i<mediaInfo.tracks.length; i++)
 	{
