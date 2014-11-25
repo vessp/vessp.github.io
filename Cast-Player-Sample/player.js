@@ -977,7 +977,7 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
   var activeTrackIds = event.data.activeTrackIds;
   var mediaInfo = this.mediaManager_.getMediaInformation();
   
-  var verifiedActiveTrackIds = [];
+  /*var verifiedActiveTrackIds = [];
   if(activeTrackIds && mediaInfo)
   {
 	this.player_.enableCaptions(false, 'ttml');
@@ -995,13 +995,33 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
 			}
 		}
 	}
+	
+	
+  }
+  this.messageBus_.broadcast(JSON.stringify({'type':'activeTrackIds', 'data':verifiedActiveTrackIds}));
+  */
+  
+  if(mediaInfo && mediaInfo.tracks)
+  {
+	for(var i=0; i<mediaInfo.tracks.length; i++)
+	{
+		var track = mediaInfo.tracks[i];
+		this.player_.enableCaptions(true, 'ttml', track.trackContentId);
+	}
   }
   
-  this.element_.setAttribute("showTextTracks", "true");
+  if(activeTrackIds && activeTrackIds.length > 0)
+  {
+	 this.element_.setAttribute('hidetexttracks', 'false');
+  }
+  else
+  {
+	 this.element_.setAttribute('hidetexttracks', 'true');
+  }
   
   this.onEditTracksInfoOrig_(event); // Super Call
   
-  this.messageBus_.broadcast(JSON.stringify({'type':'activeTrackIds', 'data':verifiedActiveTrackIds}));
+  this.messageBus_.broadcast(JSON.stringify({'type':'activeTrackIds', 'data':activeTrackIds}));
 };
 
 
