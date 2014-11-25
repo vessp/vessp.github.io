@@ -978,38 +978,29 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
   var activeTrackIds = event.data.activeTrackIds;
   var mediaInfo = this.mediaManager_.getMediaInformation();
   
-  /*var verifiedActiveTrackIds = [];
-  if(activeTrackIds && mediaInfo)
-  {
-	this.player_.enableCaptions(false, 'ttml');
-    for(var i=0; i<activeTrackIds.length; i++)
-	{
-		var activeTrackId = activeTrackIds[i];
-		
-		for(var j=0; j<mediaInfo.tracks.length; j++)
-		{
-			var track = mediaInfo.tracks[j];
-			if(track.trackId == activeTrackId)
-			{
-				verifiedActiveTrackIds.push(activeTrackId);
-				this.player_.enableCaptions(true, 'ttml', track.trackContentId);
-			}
-		}
-	}
-	
-	
-  }
-  this.messageBus_.broadcast(JSON.stringify({'type':'activeTrackIds', 'data':verifiedActiveTrackIds}));
-  */
-  
   if(mediaInfo && mediaInfo.tracks)
   {
-	 //document.getElementsByTagName('video')[0]['textTracks'].length
-	 if(activeTrackContentIds.length != mediaInfo.tracks.length)
-	 {
-		activeTrackContentIds = [];
-		this.player_.enableCaptions(false, 'ttml'); //disable all tracks
-	 }
+	//document.getElementsByTagName('video')[0]['textTracks'].length
+	for(var i=0; i<activeTrackContentIds.length; i++)
+	{
+	    var found = false;
+	    for(var j=0; j<mediaInfo.tracks.length; j++)
+		{
+			var track = mediaInfo.tracks[j];
+			if(track.trackId == activeTrackContentIds[i])
+			{
+				found = true;
+			}
+			
+		}
+		
+		if(found == false)
+		{
+			activeTrackContentIds = [];
+			this.player_.enableCaptions(false, 'ttml'); //disable all tracks
+			break;
+		}
+	}
   
   
 	for(var i=0; i<mediaInfo.tracks.length; i++)
