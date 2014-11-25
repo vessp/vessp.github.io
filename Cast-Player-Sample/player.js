@@ -997,6 +997,8 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
 	}
   }
   
+  this.element_.setAttribute("showTextTracks", "true");
+  
   this.onEditTracksInfoOrig_(event); // Super Call
   
   this.messageBus_.broadcast(JSON.stringify({'type':'activeTrackIds', 'data':verifiedActiveTrackIds}));
