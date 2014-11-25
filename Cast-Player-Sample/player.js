@@ -991,7 +991,6 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
 			{
 				found = true;
 			}
-			
 		}
 		
 		if(found == false)
