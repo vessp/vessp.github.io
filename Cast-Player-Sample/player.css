@@ -118,7 +118,7 @@ body {
 }
 
 .player .media-info .media-subtitle {
-  color: rgba(203, 203, 203, 0.8);
+  color: rgba(255, 0, 0, 0.8);
   font-size: 22px;
   overflow: hidden;
   width: 80%;
