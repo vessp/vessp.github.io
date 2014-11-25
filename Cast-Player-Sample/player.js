@@ -990,6 +990,7 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
 			if(track.trackId == activeTrackContentIds[i])
 			{
 				found = true;
+				break;
 			}
 		}
 		
