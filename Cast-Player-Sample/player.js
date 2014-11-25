@@ -967,6 +967,7 @@ sampleplayer.CastPlayer.prototype.onLoadMetadataError_ = function(event) {
       });
 };
 
+var activeTrackContentIds = [];
 
 sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
   this.log_('onEditTracksInfo_');
@@ -1001,14 +1002,31 @@ sampleplayer.CastPlayer.prototype.onEditTracksInfo_ = function(event) {
   this.messageBus_.broadcast(JSON.stringify({'type':'activeTrackIds', 'data':verifiedActiveTrackIds}));
   */
   
-  if(mediaInfo && mediaInfo.tracks && document.getElementsByTagName('video')[0]['textTracks'].length != mediaInfo.tracks.length)
+  if(mediaInfo && mediaInfo.tracks)
   {
+	 //document.getElementsByTagName('video')[0]['textTracks'].length
+	 if(activeTrackContentIds.length != mediaInfo.tracks.length)
+	 {
+		activeTrackContentIds = [];
+		this.player_.enableCaptions(false, 'ttml'); //disable all tracks
+	 }
+  
+  
 	for(var i=0; i<mediaInfo.tracks.length; i++)
 	{
 		var track = mediaInfo.tracks[i];
-		//this.player_.enableCaptions(false, 'ttml');
-		this.player_.enableCaptions(true, 'ttml', track.trackContentId);
+		
+		if(activeTrackContentIds.indexOf(track.trackContentId) == -1)
+		{
+			this.player_.enableCaptions(true, 'ttml', track.trackContentId);
+			activeTrackContentIds.push(track.trackContentId);
+		}
 	}
+  }
+  else
+  {
+    activeTrackContentIds = [];
+	this.player_.enableCaptions(false, 'ttml'); //disable all tracks
   }
   
   if(activeTrackIds && activeTrackIds.length > 0)
