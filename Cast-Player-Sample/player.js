@@ -78,6 +78,9 @@ var sampleplayer = sampleplayer || {};
 sampleplayer.CastPlayer = function(element) {
 
   window.CastPlayerInstance = this;
+  //.receiverManager_ = cast.receiver.CastReceiverManager.getInstance();
+  //.mediaManager_ = new cast.receiver.MediaManager(this.mediaElement_);
+  //.player_ = new cast.player.api.Player(host);
 
   /**
    * The debug setting to control receiver, MPL and player logging.
@@ -706,6 +709,7 @@ sampleplayer.CastPlayer.prototype.onSenderDisconnected_ = function(event) {
   this.log_('onSenderDisconnected');
   // When the last or only sender is connected to a receiver,
   // tapping Disconnect stops the app running on the receiver.
+  console.log("onSenderDisconnected_(): senders=" + this.receiverManager_.getSenders() + ", discReason=" + event.reason);
   if (this.receiverManager_.getSenders().length === 0 &&
       event.reason ===
           cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER) {
