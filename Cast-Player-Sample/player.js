@@ -198,27 +198,9 @@ sampleplayer.CastPlayer = function(element) {
   this.receiverManager_.setApplicationState(
       sampleplayer.getApplicationState_());
 
-	  
-	this.senderDisconnectionList = [];
-	  
-	this.messageBus_ = this.receiverManager_.getCastMessageBus(EPIX_MESSAGE_NAMESPACE);
-    
-	this.messageBus_.onMessage = function(event) {
-		console.log(event);
-		
-		var json = event.data;
-		if(json)
-		{
-			if(json['type'] == "senderDisconnectedByUser")
-			{
-				this.senderDisconnectionList.push(event.senderId);
-			}
-		}
-		
-		JSON.stringify({'type':'activeTrackIds', 'data':activeTrackIds})
-	};
-	  
-
+  this.messageBus_ = this.receiverManager_.getCastMessageBus(EPIX_MESSAGE_NAMESPACE);
+  this.messageBus_.onMessage = this.onMessageReceived_.bind(this);
+  
   /**
    * The remote media object.
    * @private {cast.receiver.MediaManager}
@@ -710,7 +692,6 @@ sampleplayer.CastPlayer.prototype.onReady_ = function() {
   this.setState_(sampleplayer.State.IDLE, false);
 };
 
-
 /**
  * Called when a sender disconnects from the app.
  *
@@ -724,8 +705,8 @@ sampleplayer.CastPlayer.prototype.onSenderDisconnected_ = function(event) {
   
   console.log("onSenderDisconnected_(): senders=" + this.receiverManager_.getSenders() + ", senderId=" + event.senderId + ", discReason=" + event.reason);
   
-  boolean inSenderDisconnectionList = this.senderDisconnectionList.indexOf(event.senderId) != -1;
-  this.senderDisconnectionList.remove(event.senderId);
+  boolean inSenderDisconnectionList = false;//this.senderDisconnectionList.indexOf(event.senderId) != -1;
+  //this.senderDisconnectionList.remove(event.senderId);
   
   if (this.receiverManager_.getSenders().length === 0
 		&& ( event.reason === cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER || inSenderDisconnectionList ))
@@ -734,6 +715,27 @@ sampleplayer.CastPlayer.prototype.onSenderDisconnected_ = function(event) {
   }
 };
 
+/**
+ * Called when the app receives a message on the message bus.
+ *
+ */
+
+sampleplayer.CastPlayer.prototype.senderDisconnectionList = [];
+ 
+sampleplayer.CastPlayer.prototype.onMessageReceived_ = function(event) {
+	console.log(event);
+	
+	var json = event.data;
+	if(json)
+	{
+		if(json['type'] == "senderDisconnectedByUser")
+		{
+			this.senderDisconnectionList.push(event.senderId);
+		}
+	}
+	
+	JSON.stringify({'type':'activeTrackIds', 'data':activeTrackIds})
+};
 
 /**
  * Called when media has an error. Transitions to IDLE state and
