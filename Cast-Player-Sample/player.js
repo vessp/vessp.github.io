@@ -705,7 +705,7 @@ sampleplayer.CastPlayer.prototype.onSenderDisconnected_ = function(event) {
   
   console.log("onSenderDisconnected_(): senders=" + this.receiverManager_.getSenders() + ", senderId=" + event.senderId + ", discReason=" + event.reason);
   
-  boolean inSenderDisconnectionList = false;//this.senderDisconnectionList.indexOf(event.senderId) != -1;
+  var inSenderDisconnectionList = this.senderDisconnectionList.indexOf(event.senderId) != -1;
   //this.senderDisconnectionList.remove(event.senderId);
   
   if (this.receiverManager_.getSenders().length === 0
