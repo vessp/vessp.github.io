@@ -199,11 +199,23 @@ sampleplayer.CastPlayer = function(element) {
       sampleplayer.getApplicationState_());
 
 	  
+	this.senderDisconnectionList = [];
+	  
 	this.messageBus_ = this.receiverManager_.getCastMessageBus(EPIX_MESSAGE_NAMESPACE);
-           
+    
 	this.messageBus_.onMessage = function(event) {
 		console.log(event);
 		
+		var json = event.data;
+		if(json)
+		{
+			if(json['type'] == "senderDisconnectedByUser")
+			{
+				this.senderDisconnectionList.push(event.senderId);
+			}
+		}
+		
+		JSON.stringify({'type':'activeTrackIds', 'data':activeTrackIds})
 	};
 	  
 
@@ -709,10 +721,15 @@ sampleplayer.CastPlayer.prototype.onSenderDisconnected_ = function(event) {
   this.log_('onSenderDisconnected');
   // When the last or only sender is connected to a receiver,
   // tapping Disconnect stops the app running on the receiver.
-  console.log("onSenderDisconnected_(): senders=" + this.receiverManager_.getSenders() + ", discReason=" + event.reason);
-  if (this.receiverManager_.getSenders().length === 0 &&
-      event.reason ===
-          cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER) {
+  
+  console.log("onSenderDisconnected_(): senders=" + this.receiverManager_.getSenders() + ", senderId=" + event.senderId + ", discReason=" + event.reason);
+  
+  boolean inSenderDisconnectionList = this.senderDisconnectionList.indexOf(event.senderId) != -1;
+  this.senderDisconnectionList.remove(event.senderId);
+  
+  if (this.receiverManager_.getSenders().length === 0
+		&& ( event.reason === cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER || inSenderDisconnectionList ))
+  {
     this.receiverManager_.stop();
   }
 };
