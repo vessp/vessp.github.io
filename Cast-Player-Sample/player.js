@@ -705,8 +705,8 @@ sampleplayer.CastPlayer.prototype.onSenderDisconnected_ = function(event) {
   
   console.log("onSenderDisconnected_(): senders=" + this.receiverManager_.getSenders() + ", senderId=" + event.senderId + ", discReason=" + event.reason);
   
-  var inSenderDisconnectionList = this.senderDisconnectionList.indexOf(event.senderId) != -1;
-  //this.senderDisconnectionList.remove(event.senderId);
+  var inSenderDisconnectionList = this.senderDisconnectionList.indexOf(event.senderId) != -1; //means disconnect was requested by the user directly
+  this.senderDisconnectionList.splice(this.senderDisconnectionList.indexOf(event.senderId)); //remove it from list now, because sender has disconnected
   
   if (this.receiverManager_.getSenders().length === 0
 		&& ( event.reason === cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER || inSenderDisconnectionList ))
@@ -733,8 +733,6 @@ sampleplayer.CastPlayer.prototype.onMessageReceived_ = function(event) {
 			this.senderDisconnectionList.push(event.senderId);
 		}
 	}
-	
-	JSON.stringify({'type':'activeTrackIds', 'data':activeTrackIds})
 };
 
 /**
