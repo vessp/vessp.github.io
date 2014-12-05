@@ -725,7 +725,7 @@ sampleplayer.CastPlayer.prototype.senderDisconnectionList = [];
 sampleplayer.CastPlayer.prototype.onMessageReceived_ = function(event) {
 	console.log(event);
 	
-	var json = event.data;
+	var json = JSON.parse(event.data);
 	if(json)
 	{
 		if(json['type'] == "senderDisconnectedByUser")
