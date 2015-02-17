@@ -733,6 +733,14 @@ sampleplayer.CastPlayer.prototype.onMessageReceived_ = function(event) {
 		{
 			this.senderDisconnectionList.push(event.senderId);
 		}
+		else if(json['type'] == "activeTrackIds")
+		{
+			var event = {};
+			event.data = {};
+			event.data.activeTrackIds = json['activeTrackIds'];
+		
+			this.onEditTracksInfo_(event);
+		}
 	}
 };
 
