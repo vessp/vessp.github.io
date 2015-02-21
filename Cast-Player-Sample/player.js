@@ -741,14 +741,6 @@ sampleplayer.CastPlayer.prototype.onMessageReceived_ = function(event) {
 		
 			this.onEditTracksInfo_(event);
 		}
-		else if(json['type'] == "activeTrackIds")
-		{
-			var event = {};
-			event.data = {};
-			event.data.activeTrackIds = json['activeTrackIds'];
-		
-			this.onEditTracksInfo_(event);
-		}
 		else if(json['type'] == "updateActiveTrackIds")
 		{
 			this.messageBus_.broadcast(JSON.stringify({'type':'activeTrackIds', 'data':activeTrackIds}));
