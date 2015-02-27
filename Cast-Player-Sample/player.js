@@ -480,6 +480,8 @@ sampleplayer.CastPlayer.prototype.loadVideo_ = function(info) {
   
   activeTrackContentIds = [];
   activeTrackIds = [];
+  this.messageBus_.broadcast(JSON.stringify({'type':'activeTrackIds', 'data':activeTrackIds}));
+  
   
   var protocolFunc = null;
   var autoplay = info.message.autoplay;
