@@ -477,6 +477,10 @@ sampleplayer.CastPlayer.prototype.loadMetadata_ = function(media) {
 sampleplayer.CastPlayer.prototype.loadVideo_ = function(info) {
   this.log_('loadVideo_');
   var self = this;
+  
+  activeTrackContentIds = [];
+  activeTrackIds = [];
+  
   var protocolFunc = null;
   var autoplay = info.message.autoplay;
   var url = info.message.media.contentId;
