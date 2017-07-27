@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <script
+      src="http://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+
+      #files {
+        position: absolute;
+      }
+
+      canvas {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <input type="file" id="files" name="files[]" multiple webkitdirectory/>
+
+    <script>
+      var SHUTTER_SPEED = 75
+      var canvas, ctx
+
+      $(function() {
+        $('#files').on('change', onFiles)
+        canvas = $('#canvas')
+        ctx = canvas[0].getContext('2d')
+      })
+
+      function onFiles(evt) {
+        var files = evt.target.files
+        $('#files').remove()
+
+        $('#canvas').attr('width', $(document).width()).attr('height', $(document).height())
+
+        //preload images
+        for(var i=0; i<files.length; i++) {
+          var image = new Image()
+          image.onload = function() { console.log('loaded') }
+          image.src = files[i].webkitRelativePath
+        }
+
+        //start playback
+        setTimeout(function() {setImage(0, 0)}, 1000)
+
+        function setImage(fileIndex) {
+          var uri = files[fileIndex].webkitRelativePath
+          var nextFileIndex = fileIndex >= files.length-1 ? 0 : fileIndex+1
+
+          drawCanvasImage(uri)
+
+          setTimeout(function() {
+            setImage(nextFileIndex)
+          }, SHUTTER_SPEED)
+        }
+      }
+
+      function drawCanvasImage(uri) {
+        var image = new Image()
+        image.onload = function() {
+          let cw = canvas.width()
+          let ch = canvas.height()
+
+          let ratioWidth = cw / this.width
+          let ratioHeight = ch / this.height
+          let ratio = Math.min(ratioWidth, ratioHeight)
+
+          let width = this.width * ratio
+          let height = this.height * ratio
+          let x = Math.random() * (cw - width)
+          let y = Math.random() * (ch - height)
+
+          // console.log(cw, ch, width, height)
+
+          // let radius = 10
+          
+          // ctx.beginPath();
+          // ctx.moveTo(x + radius, y);
+          // ctx.lineTo(x + cw - radius, y);
+          // ctx.quadraticCurveTo(x + cw, y, x + cw, y + radius);
+          // ctx.lineTo(x + cw, y + ch - radius);
+          // ctx.quadraticCurveTo(x + cw, y + ch, x + cw - radius, y + ch);
+          // ctx.lineTo(x + radius, y + ch);
+          // ctx.quadraticCurveTo(x, y + ch, x, y + ch - radius);
+          // ctx.lineTo(x, y + radius);
+          // ctx.quadraticCurveTo(x, y, x + radius, y);
+          // ctx.closePath();
+          // ctx.clip();
+          ctx.drawImage(image,x,y,width,height);
+          // ctx.restore();
+        }
+        image.src = uri
+      }
+
+    </script>
+  </body>
+
